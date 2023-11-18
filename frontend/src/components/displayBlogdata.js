@@ -2,6 +2,14 @@ import React , {useEffect,useState} from 'react'
 import axios from 'axios'
 import Card from './card'
 export default function DisplayBlogdata() {
+    function Text(text, limit) {
+      if (text.length <= limit) {
+        return text;
+      } 
+      else {
+        return text.slice(0, limit) + "...";
+      }
+    }
     let [blogdata,setBlogdata] = useState([])
     useEffect(()=>{
       axios.get('http://localhost:5001/getBlogData').then((res)=>{ 
@@ -11,16 +19,14 @@ export default function DisplayBlogdata() {
     },[])
   return (
     <div className='row'>
-    <div ></div>
+    <div ><h2 className='mx-4'>Trending Blogs...!</h2></div>
     {
-         blogdata.map((e)=>{
+         blogdata.slice(0,4).map((e,i)=>{
             return(
-            //    <h1>kkkkkkk</h1>
-                <Card title={e.title} des={e.des}  category={e.category}/>
+                <Card title={e.title} des={Text(e.des, 100)}  category={e.category}/>
             )
          })
     }
-    {/* <Card/> <Card/> <Card/> <Card/> */}
   </div>
   )
 }

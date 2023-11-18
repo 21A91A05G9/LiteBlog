@@ -11,12 +11,27 @@ export default function App() {
   return (
     <div className='main'>
       <BrowserRouter>
-        <Createblog/>
+      {/* <Createblog/> */}
+        
+        <div class="area" >
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/login' element={<Login/>}/>
         </Routes>
+                {/* <ul class="circles">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                </ul> */}
+        </div >
       </BrowserRouter>
       
     </div>

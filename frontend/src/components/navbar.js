@@ -15,7 +15,8 @@ export default function Navbar() {
           <img src={Logo} alt="Logo" height={20} width={25} />   </button> &nbsp;
           BlogLite
         </a>
-        <button className="btn btn-sm d-flex" type="submit">SIGN IN</button>
+        <Link to='/register'><button className="btn btn-sm d-flex" type="submit">SIGN IN</button></Link>
+        
       </div>
     </nav>
     <Sidebar/>

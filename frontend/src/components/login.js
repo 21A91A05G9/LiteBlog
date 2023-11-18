@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 export default function Login() {
-  
+    const nav=useNavigate()
     const [logindata,setLogindata] = useState(
         {
             username:'',
@@ -16,6 +16,7 @@ export default function Login() {
             console.log(logindata)
             if(res.data.msg === 'success') {
                 alert('login successfully')
+                nav('/')
             }
             else if(res.data.msg === 'incorrect password' ){
                 alert('invalid password')
@@ -26,7 +27,7 @@ export default function Login() {
   return (
     <div className='container'>
         <div className='container login'>
-        <div className="card ">
+        <div className="card loginform">
         
                 <div className='header mb-3'>Login here</div>
               

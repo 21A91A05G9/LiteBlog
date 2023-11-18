@@ -7,7 +7,7 @@ import blogData from "./models/blogdata";
 const app=express();
 app.use(bodyParser.json())
 app.use(cors())
-mongoose.connect('mongodb+srv://vasavi_08:sy4zQo3tosjEJX6x@cluster0.yhpakpu.mongodb.net/DriveReady?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://vasavi_08:DfXUufrwolv7SV42@cluster0.yhpakpu.mongodb.net/DriveReady?retryWrites=true&w=majority')
 .then(()=> app.listen(5001))
 .then(()=>console.log("Connected to Database & Listening to localhost 5001"))
 .catch((err)=>console.log(err));
@@ -55,7 +55,7 @@ app.post('/newblog',async(req,res,next)=>{
 })
 
 
-app.post('/login', async (req,res) => {
+app.post('/login', async (req,res,next) => {
     const { username, password } = req.body;
     try {
       const user = await register.findOne({ username:username });
@@ -81,7 +81,7 @@ app.post('/login', async (req,res) => {
 app.get('/getBlogData', async (req,res,next)=>{  
     let blogdata;
     try{
-        blogdata = await blogdata.find();
+        blogdata = await blogData.find();
         if(!blogdata){
           return res.status(404).json({message:"Failed to get data"})
         }
