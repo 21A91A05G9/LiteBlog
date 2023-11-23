@@ -24,7 +24,21 @@ export default function Register() {
         }) 
     }
   return (
-    <div className='container'>
+    <div className='container-fluid'>
+         <div class="area" >
+         <ul class="circles">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                </ul>
+        
         <div className='container login'>
         <div className="card loginform">
         
@@ -66,7 +80,7 @@ export default function Register() {
                 </div>
         </div>  
         </div>
-
+        </div >
     </div>
       
   )

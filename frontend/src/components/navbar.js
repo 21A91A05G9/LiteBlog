@@ -15,7 +15,12 @@ export default function Navbar() {
           <img src={Logo} alt="Logo" height={20} width={25} />   </button> &nbsp;
           BlogLite
         </a>
-        <Link to='/register'><button className="btn btn-sm d-flex" type="submit">SIGN IN</button></Link>
+        <p className=" d-flex">
+
+        
+        <Link to='/createblog'><button  type="submit" className='btn-sm btn d-flex mx-3'>create New Blog</button></Link>
+        <Link to='/register'><button className="btn btn-sm d-flex" type="submit mx-3">SIGN IN</button></Link>
+        </p>
         
       </div>
     </nav>

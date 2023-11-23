@@ -7,7 +7,7 @@ import blogData from "./models/blogdata";
 const app=express();
 app.use(bodyParser.json())
 app.use(cors())
-mongoose.connect('mongodb+srv://vasavi_08:DfXUufrwolv7SV42@cluster0.yhpakpu.mongodb.net/DriveReady?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://vasavi_08:6H0ofPCG4sjWVhxt@cluster0.yhpakpu.mongodb.net/DriveReady?retryWrites=true&w=majority')
 .then(()=> app.listen(5001))
 .then(()=>console.log("Connected to Database & Listening to localhost 5001"))
 .catch((err)=>console.log(err));
@@ -93,4 +93,27 @@ app.get('/getBlogData', async (req,res,next)=>{
     
 })
 
+app.get('/getSearchData', async (req,res,next)=>{  
+  let searchdata;
+  const key = req.query.key;
+  try {
+    if (key) {
+      searchdata = await blogData.find({ title:{ $regex: new RegExp(key, 'i') }});
+    } 
+    else {
+      return res.status(200).json({ message: "title parameter is required for search." });
+    }
+
+    if (!searchdata) {
+      return res.status(200).json({ message: "No matching data found" });
+    }
+
+    return res.status(200).json({ searchdata });
+  } 
+  catch (err) {
+    console.log(err);
+    
+  }
   
+})
+

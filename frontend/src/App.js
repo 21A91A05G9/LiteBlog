@@ -13,25 +13,14 @@ export default function App() {
       <BrowserRouter>
       {/* <Createblog/> */}
         
-        <div class="area" >
+       
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/createblog' element={<Createblog/>}/>
         </Routes>
-                {/* <ul class="circles">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                </ul> */}
-        </div >
+
       </BrowserRouter>
       
     </div>

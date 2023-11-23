@@ -25,8 +25,21 @@ export default function Login() {
         }) 
     }
   return (
-    <div className='container'>
-        <div className='container login'>
+    <div className='containe-fluidr'>
+        <div class="area" >
+         <ul class="circles">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                </ul>
+        <div className='container-fluid login'>
         <div className="card loginform">
         
                 <div className='header mb-3'>Login here</div>
@@ -55,7 +68,7 @@ export default function Login() {
                 </div>
         </div>  
         </div>
-
+        </div>
     </div>
       
   )
