@@ -117,3 +117,27 @@ app.get('/getSearchData', async (req,res,next)=>{
   
 })
 
+
+app.get('/getCategory', async (req,res,next)=>{  
+  let categoryData;
+  const key = req.query.key;
+  try {
+    if (key) {
+      categoryData= await blogData.find({ category:{ $regex: new RegExp(key, 'i') }});
+    } 
+    else {
+      return res.status(200).json({ message: "title parameter is required for search." });
+    }
+
+    if (!categoryData) {
+      return res.status(200).json({ message: "No matching data found" });
+    }
+
+    return res.status(200).json({ categoryData});
+  } 
+  catch (err) {
+    console.log(err);
+    
+  }
+  
+})
