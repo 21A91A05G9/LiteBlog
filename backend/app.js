@@ -141,3 +141,13 @@ app.get('/getCategory', async (req,res,next)=>{
   }
   
 })
+
+app.get('/getuser/:id', (req, res, next) => {
+  const _id = req.params.id;
+    console.log(_id)
+    register.findOne({"_id": _id}).then((user) =>{
+    console.log("user",user,user.name)
+    res.send({userName:user.name})
+  })
+});
+

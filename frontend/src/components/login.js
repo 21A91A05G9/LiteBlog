@@ -13,10 +13,12 @@ export default function Login() {
         e.preventDefault(); 
         
         axios.post('http://localhost:5001/login',logindata).then((res)=>{
-            console.log(logindata)
+            console.log(logindata,res.data.id)
             if(res.data.msg === 'success') {
                 alert('login successfully')
-                nav('/')
+                const Id=res.data.id
+                console.log("pppppppppppp",Id)
+                nav('/'+Id)
             }
             else if(res.data.msg === 'incorrect password' ){
                 alert('invalid password')

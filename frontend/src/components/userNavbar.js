@@ -3,7 +3,7 @@ import Logo from '../images/logo.png'
 import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faHomeUser,faUser,faCamera} from '@fortawesome/free-solid-svg-icons'
-export default function Navbar() {
+export default function UserNavbar(props) {
   return (
     <>
     <div>
@@ -12,13 +12,23 @@ export default function Navbar() {
         <a class="navbar-brand" href="#">
          
           <img src={Logo} alt="Logo" height={20} width={25} />    &nbsp;
-          BlogLite
+          <span>BlogLite</span>
         </a>
         <p className=" d-flex">
 
         
         <Link to='/createblog'><button  type="submit" className='btn-sm btn d-flex mx-3'>create New Blog</button></Link>
-        <Link to='/register'><button className="btn btn-sm d-flex" type="submit mx-3">SIGN OUT</button></Link>
+        
+        <div class="dropdown">
+          <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {props.name}
+          </button>
+          <ul class="dropdown-menu bg-secondary">
+            <li><Link to='/login' class="dropdown-item">SIGN OUT</Link></li>
+            <li><Link to='/register' className='dropdown-item' href="#">Profile</Link></li>
+
+          </ul>
+        </div>
         </p>
         
       </div>

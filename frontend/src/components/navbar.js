@@ -8,12 +8,12 @@ export default function Navbar() {
   return (
     <>
     <div>
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar bg-body-tertiary ">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
          
           <img src={Logo} alt="Logo" height={20} width={25} />    &nbsp;
-          BlogLite
+          <span>BlogLite</span>
         </a>
         <p className=" d-flex">
 
