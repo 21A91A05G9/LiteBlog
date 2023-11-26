@@ -23,7 +23,7 @@ export default function DisplayBlogdata() {
     {
          blogdata.slice(0,4).map((e,i)=>{
             return(
-                <Card title={e.title} des={Text(e.des, 100)}  category={e.category}/>
+                <Card title={e.title} des={Text(e.des, 50)}  category={e.category} />
             )
          })
     }

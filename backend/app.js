@@ -35,14 +35,16 @@ app.post('/register',async(req,res,next)=>{
 
 app.post('/newblog',async(req,res,next)=>{
   console.log("BloData in backend:",req.body)
-  const {title,category,des} = req.body
+  const {title,category,des,state,by} = req.body
   if(title=='' || category=='' || des==''){
       return  res.send({msg:'fill all details'})
   }
   const BlogData = new blogData({
       title,
       category,
-      des
+      des,
+      state,
+      by
   })
   try{
       BlogData.save()

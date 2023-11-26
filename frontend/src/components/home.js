@@ -50,7 +50,7 @@ export default function Home() {
        
         {
           
-          usr? <UserNavbar name={usr}/> : <Navbar/>
+          usr? <UserNavbar name={usr} id={id}/> : <Navbar/>
         }
         <div className='container-fluid'>
           <div className='row'>

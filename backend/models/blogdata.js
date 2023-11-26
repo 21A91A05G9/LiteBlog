@@ -14,6 +14,13 @@ const blog = new schema({
         type:String,
         required:true
     },
-   
+    state:{
+        type:String,
+        required:true
+    },
+    by:{
+        type:String,
+        required:true
+    }
 })
 export default mongoose.model('newBlogData',blog)

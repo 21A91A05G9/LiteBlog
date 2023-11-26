@@ -24,7 +24,7 @@ export default function Register() {
         }) 
     }
   return (
-    <div className='container-fluid'>
+    <div className=''>
          <div class="area" >
          <ul class="circles">
                         <li></li>

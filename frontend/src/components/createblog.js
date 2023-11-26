@@ -1,17 +1,30 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 export default function Createblog() {
     // const nav = useNavigate()
+    const [name,setName] = useState("")
+    const {id} = useParams();
+    console.log("id",id)
+    
+    if(id!=undefined){
+    axios.get('http://localhost:5001/getuser/'+id).then((res) => {
+        setName(res.data.userName)
+        console.log("setting name",name)
+    })}
     const [blogdata,setBlogdata] = useState(
         {
             title:'',
             category:'',
-            des:''
+            des:'',
+            state:'Unliked',
+            by:"username"
             
         }
     )
+   
     const  handleNewBlog = (e) => {
+        
         console.log(blogdata)
         e.preventDefault();
         axios.post('http://localhost:5001/newblog',blogdata).then((res)=>{

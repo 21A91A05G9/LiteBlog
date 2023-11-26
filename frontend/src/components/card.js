@@ -19,7 +19,8 @@ export default function card(props) {
         <h5 class="card-title">{props.title}</h5>
         <p class="card-text">{Text(props.des, 100)}</p>
       </div>
-      <p className=''>{props.category}</p>
+      <div className='row'><p className='col-md-2'><Like/></p><p className='col-md-9'>{props.category}</p></div>
+      
       
     </div>
   </div>

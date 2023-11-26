@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faHomeUser,faUser,faCamera} from '@fortawesome/free-solid-svg-icons'
 export default function UserNavbar(props) {
+  
   return (
     <>
     <div>
@@ -17,7 +18,7 @@ export default function UserNavbar(props) {
         <p className=" d-flex">
 
         
-        <Link to='/createblog'><button  type="submit" className='btn-sm btn d-flex mx-3'>create New Blog</button></Link>
+        <Link to={'/createblog/'+props.id}><button  type="submit" className='btn-sm btn d-flex mx-3'>create New Blog</button></Link>
         
         <div class="dropdown">
           <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

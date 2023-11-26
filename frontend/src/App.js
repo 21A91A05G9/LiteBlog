@@ -19,7 +19,7 @@ export default function App() {
           <Route path='/:id' element={<Home/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/login' element={<Login/>}/>
-          <Route path='/createblog' element={<Createblog/>}/>
+          <Route path='/createblog/:id' element={<Createblog/>}/>
         </Routes>
 
       </BrowserRouter>
