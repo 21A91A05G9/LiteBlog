@@ -52,7 +52,7 @@ app.post('/newblog',async(req,res,next)=>{
   catch(err){
       console.log(err)
   }
-  
+  const BlogId=BlogData._id
   return  res.send({"newBlogData":BlogData,msg:'successfully created'})
 })
 
@@ -153,3 +153,33 @@ app.get('/getuser/:id', (req, res, next) => {
   })
 });
 
+app.get('/getId' , (req,res,next)=>{
+   const title=req.query.title;
+   blogData.findOne({"title":title}).then((user) =>{
+      res.send({id:user._id})
+   })
+})
+
+
+app.put('/updateblog/:id', async (req, res, next) => {
+  const id = req.params.id;
+  const { title, category, des, state, by } = req.body;
+
+  try {
+    if (id) {
+      const updateBlogData = await blogData.findByIdAndUpdate(id, { title, category, des, state, by }, { new: true });
+
+      if (!updateBlogData) {
+        return res.status(404).send({ msg: 'No matching document found' });
+      }
+
+      return res.send(updateBlogData);
+    } 
+    else {
+      return res.status(400).send({ msg: 'id is not present' });
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).send({ msg: 'Internal Server Error' });
+  }
+});

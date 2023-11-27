@@ -1,7 +1,7 @@
 import React , {useEffect,useState} from 'react'
 import axios from 'axios'
 import Card from './card'
-export default function DisplayBlogdata() {
+export default function DisplayBlogdata(props) {
     function Text(text, limit) {
       if (text.length <= limit) {
         return text;
@@ -23,7 +23,7 @@ export default function DisplayBlogdata() {
     {
          blogdata.slice(0,4).map((e,i)=>{
             return(
-                <Card title={e.title} des={Text(e.des, 50)}  category={e.category} />
+                <Card title={e.title} des={Text(e.des, 50)} state={e.state} category={e.category} by={e.by} id={props.id}/>
             )
          })
     }

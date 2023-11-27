@@ -1,28 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 export default function Createblog() {
     // const nav = useNavigate()
-    const [name,setName] = useState("")
-    const {id} = useParams();
-    console.log("id",id)
-    
-    if(id!=undefined){
-    axios.get('http://localhost:5001/getuser/'+id).then((res) => {
-        setName(res.data.userName)
-        console.log("setting name",name)
-    })}
-    const [blogdata,setBlogdata] = useState(
-        {
-            title:'',
-            category:'',
-            des:'',
-            state:'Unliked',
-            by:"username"
-            
+    const [name, setName] = useState("");
+    const { id } = useParams();
+    console.log("id", id);
+    const [blogId,setBlogId]= useState(undefined);
+    useEffect(() => {
+        if (id !== undefined) {
+            axios.get('http://localhost:5001/getuser/' + id)
+            .then((res) => {
+                setName(res.data.userName);
+                console.log("setting name", name);
+            });
         }
-    )
-   
+    }, [id]); 
+
+    const [blogdata, setBlogdata] = useState({
+        title: '',
+        category: '',
+        des: '',
+        state: 'Unliked',
+        by: ""
+    });
+
+    useEffect(() => {
+    
+        setBlogdata(prevData => ({...prevData,by: name}) );
+    }, [name]);
+
     const  handleNewBlog = (e) => {
         
         console.log(blogdata)
@@ -32,6 +39,7 @@ export default function Createblog() {
                 
                 if(res.data.msg==='successfully created'){
                     // nav('/login/')
+                    setBlogId(res.data.BlogId)
                 }
             
         }) 
@@ -39,10 +47,11 @@ export default function Createblog() {
   return (
     <div className='container create'>
         <form onSubmit={handleNewBlog}>
-        <h2 className='text-center pt-3'>Create New Blog</h2>
+        <h2 className='text-center pt-3'>Create New Blog {name}</h2>
         <div class="input-group input-group-lg my-2">
         <span class="input-group-text" id="inputGroup-sizing-lg">Category</span>
         <select  value={blogdata.category} onChange={(e) => setBlogdata({ ...blogdata, category: e.target.value })}>
+
             <option>Art</option>
             <option>Music</option>
             <option>Sports</option>

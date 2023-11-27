@@ -84,12 +84,12 @@ export default function Home() {
                 {
                     searchResult.map((e,i)=>{
                         return(
-                            <Card title={e.title} des={e.des}  category={e.category}/>
+                            <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id}/>
                         )
                     })
                 }
                 </div>)
-                : <DisplayBlogdata />
+                : <DisplayBlogdata id={id}/>
               }
             </div>
           </div>
