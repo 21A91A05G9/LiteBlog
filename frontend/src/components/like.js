@@ -13,7 +13,7 @@ export default function Like(props) {
     by:props.by
   })
 
-  const [id,setId] = useState("");
+  const [id,setId] = useState(undefined);
   const toggle = () => {
       if(newBlogData.state==="Unliked"){
           setNewBlogData({...newBlogData,state:"Liked"})
@@ -23,21 +23,30 @@ export default function Like(props) {
         setNewBlogData({...newBlogData,state:"Unliked"})
         
       }
-      axios.get('http://localhost:5001/getId', { params: {title: newBlogData.title} }).then((res)=>{
-        setId(res.data.id);
-        console.log("blogdata id is",id)
-      })
+     console.log("blogdata id is", id,newBlogData.title);
+     axios.get('http://localhost:5001/getId', { params: {title: newBlogData.title} }).then((res) => {  
+      setId(res.data.id);
+      console.log("blogdata id is", id);
+      if (id !== undefined) {
+        axios.put('http://localhost:5001/updateblog/' + id, newBlogData)
+          .then((res) => {
+            console.log("updated", res.data.updatedBlogData);
+          });
+      }
+      
+    });
+
 
       
   };
-  useEffect(()=>{
-    if(id!=undefined){
-      axios.put('http://localhost:5001/updateblog/'+id,newBlogData).then((res)=>{
-        console.log(res.data.updatedBlogData)
+  // useEffect(()=>{
+  //   if(id!=undefined){
+  //     axios.put('http://localhost:5001/updateblog/'+id,newBlogData).then((res)=>{
+  //       console.log(res.data.updatedBlogData)
         
-      })
-    }
-  },[id])
+  //     })
+  //   }
+  // },[id])
   
   return (
     <div className='row'>

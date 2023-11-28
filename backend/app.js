@@ -35,7 +35,7 @@ app.post('/register',async(req,res,next)=>{
 
 app.post('/newblog',async(req,res,next)=>{
   console.log("BloData in backend:",req.body)
-  const {title,category,des,state,by} = req.body
+  const {title,category,des,state,by,image} = req.body
   if(title=='' || category=='' || des==''){
       return  res.send({msg:'fill all details'})
   }
@@ -44,7 +44,8 @@ app.post('/newblog',async(req,res,next)=>{
       category,
       des,
       state,
-      by
+      by,
+      image
   })
   try{
       BlogData.save()
@@ -153,12 +154,21 @@ app.get('/getuser/:id', (req, res, next) => {
   })
 });
 
-app.get('/getId' , (req,res,next)=>{
-   const title=req.query.title;
-   blogData.findOne({"title":title}).then((user) =>{
-      res.send({id:user._id})
-   })
-})
+app.get('/getId', (req, res, next) => {
+  const title = req.query.title;
+  
+  blogData.findOne({ "title": title }).then((user) => {
+    if (!user) {
+      return res.status(404).send({ msg: 'Blog not found' });
+    }
+    console.log(user._id)
+    res.send({ id: user._id });
+  }).catch((err) => {
+    console.error(err);
+    res.status(500).send({ msg: 'Internal Server Error' });
+  });
+});
+
 
 
 app.put('/updateblog/:id', async (req, res, next) => {
@@ -172,7 +182,7 @@ app.put('/updateblog/:id', async (req, res, next) => {
       if (!updateBlogData) {
         return res.status(404).send({ msg: 'No matching document found' });
       }
-
+      console.log(updateBlogData)
       return res.send(updateBlogData);
     } 
     else {

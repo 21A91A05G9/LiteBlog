@@ -13,8 +13,28 @@ export default function card(props) {
     }
   }
   return (
-    <div class="col-md-4 col-lg-3">
-    <div class="card bg-light cards" >
+    
+    <div class="col-md-3 ">
+      <article class="card cards">
+  <img
+    class="card__background"
+    src={Logo}
+    alt="Photo of Cartagena's cathedral at the background and some colonial style houses"
+    width="1920"
+    height="2193"
+  />
+  <div class="card__content | flow">
+    <div class="card__content--container | flow">
+      <h4 class="card__title ">{props.title}</h4>
+      <p class="card__description ">
+      {Text(props.des, 50)}
+      </p>
+      <div className='row'><p className='col-md-11'>written by-<br/>{props.by}</p></div>
+    </div>
+    <button class="card__button">Read more</button>
+  </div>
+</article>
+    {/* <div class="card bg-light cards" >
       <img src={Logo} class="card-img-top" alt="..."/>
       <div class="card-body">
         <h5 class="card-title">{props.title}</h5>
@@ -24,7 +44,7 @@ export default function card(props) {
       <div className='row'><p className='col-md-11'>by &nbsp;{props.by}</p></div>
       
       
-    </div>
+    </div> */}
   </div>
     
   )

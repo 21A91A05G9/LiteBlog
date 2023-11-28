@@ -22,7 +22,8 @@ export default function Createblog() {
         category: '',
         des: '',
         state: 'Unliked',
-        by: ""
+        by: "",
+        image:""
     });
 
     useEffect(() => {
@@ -47,6 +48,7 @@ export default function Createblog() {
   return (
     <div className='container create'>
         <form onSubmit={handleNewBlog}>
+        <input type='file' accept='image/*' onChange={(e)=>setBlogdata({...blogdata,image:e.target.value})} />
         <h2 className='text-center pt-3'>Create New Blog {name}</h2>
         <div class="input-group input-group-lg my-2">
         <span class="input-group-text" id="inputGroup-sizing-lg">Category</span>

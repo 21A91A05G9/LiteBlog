@@ -18,7 +18,7 @@ export default function Navbar() {
         <p className=" d-flex">
 
         
-        <Link to='/login'><button  type="submit" className='btn-sm btn d-flex mx-3'>create New Blog</button></Link>
+        <Link to='/login'><button  type="submit" className='btn-sm btn d-flex mx-3'>Create New Blog</button></Link>
         <Link to='/register'><button className="btn btn-sm d-flex" type="submit mx-3">SIGN IN</button></Link>
         </p>
         

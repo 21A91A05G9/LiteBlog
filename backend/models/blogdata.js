@@ -21,6 +21,10 @@ const blog = new schema({
     by:{
         type:String,
         required:true
+    },
+    image:{
+        type:String,
+        required:true
     }
 })
 export default mongoose.model('newBlogData',blog)
