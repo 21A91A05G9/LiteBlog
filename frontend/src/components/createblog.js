@@ -30,25 +30,50 @@ export default function Createblog() {
     
         setBlogdata(prevData => ({...prevData,by: name}) );
     }, [name]);
-
-    const  handleNewBlog = (e) => {
-        
-        console.log(blogdata)
+    const handleNewBlog = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5001/newblog',blogdata).then((res)=>{
-                alert(res.data.msg)
+      
+        const formData = new FormData();
+        formData.append('avatar', blogdata.image); // assuming 'avatar' is the key expected by your backend
+      
+        // Append other form data
+        formData.append('title', blogdata.title);
+        formData.append('category', blogdata.category);
+        formData.append('des', blogdata.des);
+        formData.append('state', blogdata.state);
+        formData.append('by', blogdata.by);
+      
+        axios
+          .post('http://localhost:5001/newblog', formData)
+          .then((res) => {
+            alert(res.data.msg);
+            if (res.data.msg === 'successfully created') {
+              setBlogId(res.data.newBlogData._id);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+    };
+      
+    // const  handleNewBlog = (e) => {
+        
+    //     console.log(blogdata)
+    //     e.preventDefault();
+    //     axios.post('http://localhost:5001/newblog',blogdata).then((res)=>{
+    //             alert(res.data.msg)
                 
-                if(res.data.msg==='successfully created'){
-                    // nav('/login/')
-                    setBlogId(res.data.BlogId)
-                }
+    //             if(res.data.msg==='successfully created'){
+    //                 // nav('/login/')
+    //                 setBlogId(res.data.BlogId)
+    //             }
             
-        }) 
-    }
+    //     }) 
+    // }
   return (
     <div className='container create'>
         <form onSubmit={handleNewBlog}>
-        <input type='file' accept='image/*' onChange={(e)=>setBlogdata({...blogdata,image:e.target.value})} />
+        <input type='file' accept='image/*' onChange={(e)=>setBlogdata({...blogdata,image:e.target.files[0].value})} />
         <h2 className='text-center pt-3'>Create New Blog {name}</h2>
         <div class="input-group input-group-lg my-2">
         <span class="input-group-text" id="inputGroup-sizing-lg">Category</span>

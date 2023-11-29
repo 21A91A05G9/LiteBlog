@@ -2,8 +2,11 @@ import express  from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
+import multer from "multer";
+const upload = multer({ dest: 'uploads/' })
 import register from "./models/register";
 import blogData from "./models/blogdata";
+
 const app=express();
 app.use(bodyParser.json())
 app.use(cors())
@@ -33,7 +36,7 @@ app.post('/register',async(req,res,next)=>{
     return  res.send({"blogData":registerData,msg:'successfully registered'})
 })
 
-app.post('/newblog',async(req,res,next)=>{
+app.post('/newblog',upload.single('avatar'), async(req,res,next)=>{
   console.log("BloData in backend:",req.body)
   const {title,category,des,state,by,image} = req.body
   if(title=='' || category=='' || des==''){
