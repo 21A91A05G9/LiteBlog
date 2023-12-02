@@ -7,6 +7,7 @@ export default function Createblog() {
     const { id } = useParams();
     console.log("id", id);
     const [blogId,setBlogId]= useState(undefined);
+
     useEffect(() => {
         if (id !== undefined) {
             axios.get('http://localhost:5001/getuser/' + id)
@@ -25,7 +26,7 @@ export default function Createblog() {
         by: "",
         image:""
     });
-
+    console.log("image name is",blogdata.image)
     useEffect(() => {
     
         setBlogdata(prevData => ({...prevData,by: name}) );
@@ -34,7 +35,7 @@ export default function Createblog() {
         e.preventDefault();
       
         const formData = new FormData();
-        formData.append('avatar', blogdata.image); // assuming 'avatar' is the key expected by your backend
+        formData.append('image', blogdata.image); // assuming 'avatar' is the key expected by your backend
       
         // Append other form data
         formData.append('title', blogdata.title);
@@ -58,7 +59,7 @@ export default function Createblog() {
       
     // const  handleNewBlog = (e) => {
         
-    //     console.log(blogdata)
+    //     console.log(blogdata.image)
     //     e.preventDefault();
     //     axios.post('http://localhost:5001/newblog',blogdata).then((res)=>{
     //             alert(res.data.msg)
@@ -73,7 +74,7 @@ export default function Createblog() {
   return (
     <div className='container create'>
         <form onSubmit={handleNewBlog}>
-        <input type='file' accept='image/*' onChange={(e)=>setBlogdata({...blogdata,image:e.target.files[0].value})} />
+        <input type='file' accept='image/*' onChange={(e)=>setBlogdata({...blogdata,image:e.target.files[0].name})} />
         <h2 className='text-center pt-3'>Create New Blog {name}</h2>
         <div class="input-group input-group-lg my-2">
         <span class="input-group-text" id="inputGroup-sizing-lg">Category</span>

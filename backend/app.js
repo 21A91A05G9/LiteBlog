@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
 import multer from "multer";
-const upload = multer({ dest: 'uploads/' })
 import register from "./models/register";
 import blogData from "./models/blogdata";
 
@@ -36,6 +35,15 @@ app.post('/register',async(req,res,next)=>{
     return  res.send({"blogData":registerData,msg:'successfully registered'})
 })
 
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//       cb(null, 'path/to/your/upload/folder'); // Specify the destination folder
+//   },
+//   filename: function (req, file, cb) {
+//       cb(null, Date.now() + '-' + file.originalname); // Use a unique filename
+//   },
+// });
+const upload = multer({ storage: storage });
 app.post('/newblog',upload.single('avatar'), async(req,res,next)=>{
   console.log("BloData in backend:",req.body)
   const {title,category,des,state,by,image} = req.body
