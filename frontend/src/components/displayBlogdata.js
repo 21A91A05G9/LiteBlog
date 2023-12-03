@@ -12,7 +12,7 @@ export default function DisplayBlogdata(props) {
     }
     let [blogdata,setBlogdata] = useState([])
     useEffect(()=>{
-      axios.get('http://localhost:5001/getBlogData').then((res)=>{ 
+      axios.get('http://localhost:5002/getBlogData').then((res)=>{ 
           setBlogdata(res.data.blogdata) 
           
       })
@@ -23,7 +23,7 @@ export default function DisplayBlogdata(props) {
     {
          blogdata.slice(0,4).map((e,i)=>{
             return(
-                <Card title={e.title} des={Text(e.des, 50)} state={e.state} category={e.category} by={e.by} id={props.id}/>
+                <Card title={e.title} des={Text(e.des, 50)} state={e.state} category={e.category} by={e.by} image={e.image} id={props.id}/>
             )
          })
     }

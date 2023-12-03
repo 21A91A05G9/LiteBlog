@@ -10,7 +10,7 @@ export default function Createblog() {
 
     useEffect(() => {
         if (id !== undefined) {
-            axios.get('http://localhost:5001/getuser/' + id)
+            axios.get('http://localhost:5002/getuser/' + id)
             .then((res) => {
                 setName(res.data.userName);
                 console.log("setting name", name);
@@ -24,9 +24,9 @@ export default function Createblog() {
         des: '',
         state: 'Unliked',
         by: "",
-        image:""
+        image:null
     });
-    console.log("image name is",blogdata.image)
+    console.log("image name is",blogdata)
     useEffect(() => {
     
         setBlogdata(prevData => ({...prevData,by: name}) );
@@ -45,10 +45,11 @@ export default function Createblog() {
         formData.append('by', blogdata.by);
       
         axios
-          .post('http://localhost:5001/newblog', formData)
+          .post('http://localhost:5002/newblog', formData)
           .then((res) => {
             alert(res.data.msg);
             if (res.data.msg === 'successfully created') {
+              console.log("image path is",res.data.imagePath)
               setBlogId(res.data.newBlogData._id);
             }
           })
@@ -74,7 +75,7 @@ export default function Createblog() {
   return (
     <div className='container create'>
         <form onSubmit={handleNewBlog}>
-        <input type='file' accept='image/*' onChange={(e)=>setBlogdata({...blogdata,image:e.target.files[0].name})} />
+        <input type='file' accept='image/*' onChange={(e) => setBlogdata({ ...blogdata, image: e.target.files[0] })} />
         <h2 className='text-center pt-3'>Create New Blog {name}</h2>
         <div class="input-group input-group-lg my-2">
         <span class="input-group-text" id="inputGroup-sizing-lg">Category</span>

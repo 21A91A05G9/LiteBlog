@@ -15,12 +15,12 @@ export default function Home() {
   console.log("id",id)
   
   if(id!=undefined){
-  axios.get('http://localhost:5001/getuser/'+id).then((res) => {
+  axios.get('http://localhost:5002/getuser/'+id).then((res) => {
     setUsr(res.data.userName)
   })}
  
   useEffect(()=>{
-    axios.get('http://localhost:5001/getSearchData', { params:{key:key} }).then((res)=>{ 
+    axios.get('http://localhost:5002/getSearchData', { params:{key:key} }).then((res)=>{ 
         setSearchResult(res.data.searchdata) 
         console.log(searchResult)
         settxt(`Looking result for "${key}"`)
@@ -30,14 +30,14 @@ export default function Home() {
   const [category,setCategory] = useState("");
   useEffect(()=>{
     console.log(category)
-    axios.get('http://localhost:5001/getCategory', { params:{key:category} }).then((res)=>{ 
+    axios.get('http://localhost:5002/getCategory', { params:{key:category} }).then((res)=>{ 
         setSearchResult(res.data.categoryData)
         settxt(`${category}  Blogs`)
     })
   },[category])
 
   const search = () => {
-      axios.get('http://localhost:5001/getSearchData', { params:{key:key} }).then((res)=>{ 
+      axios.get('http://localhost:5002/getSearchData', { params:{key:key} }).then((res)=>{ 
       setSearchResult(res.data.searchdata) 
       console.log(searchResult)
       settxt(`Looking result for "${key}"`)
@@ -84,7 +84,7 @@ export default function Home() {
                 {
                     searchResult.map((e,i)=>{
                         return(
-                            <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} e={e.image}/>
+                            <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image}/>
                         )
                     })
                 }

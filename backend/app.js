@@ -2,6 +2,7 @@ import express  from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
+import path from "path";
 import multer from "multer";
 import register from "./models/register";
 import blogData from "./models/blogdata";
@@ -10,8 +11,8 @@ const app=express();
 app.use(bodyParser.json())
 app.use(cors())
 mongoose.connect('mongodb+srv://vasavi_08:6H0ofPCG4sjWVhxt@cluster0.yhpakpu.mongodb.net/DriveReady?retryWrites=true&w=majority')
-.then(()=> app.listen(5001))
-.then(()=>console.log("Connected to Database & Listening to localhost 5001"))
+.then(()=> app.listen(5002))
+.then(()=>console.log("Connected to Database & Listening to localhost 5002"))
 .catch((err)=>console.log(err));
 app.post('/register',async(req,res,next)=>{
     console.log("Data in backend:",req.body)
@@ -35,38 +36,76 @@ app.post('/register',async(req,res,next)=>{
     return  res.send({"blogData":registerData,msg:'successfully registered'})
 })
 
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//       cb(null, 'path/to/your/upload/folder'); // Specify the destination folder
-//   },
-//   filename: function (req, file, cb) {
-//       cb(null, Date.now() + '-' + file.originalname); // Use a unique filename
-//   },
-// });
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'images/'); // Specify the destination folder for uploaded images
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname)); // Specify the image name
+  },
+});
+
 const upload = multer({ storage: storage });
-app.post('/newblog',upload.single('avatar'), async(req,res,next)=>{
-  console.log("BloData in backend:",req.body)
-  const {title,category,des,state,by,image} = req.body
-  if(title=='' || category=='' || des==''){
-      return  res.send({msg:'fill all details'})
+
+// Route for handling image upload
+app.post('/newblog', upload.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ msg: 'No image uploaded' });
   }
+
+  const { title, category, des, state, by } = req.body;
+  const image = req.file.path; // Save the image path
+
+  // Validate other fields
+  if (title === '' || category === '' || des === '') {
+    return res.status(400).json({ msg: 'Fill in all details' });
+  }
+
+  // Save data to MongoDB
   const BlogData = new blogData({
-      title,
-      category,
-      des,
-      state,
-      by,
-      image
-  })
-  try{
-      BlogData.save()
+    title,
+    category,
+    des,
+    state,
+    by,
+    image,
+  });
+
+  try {
+    BlogData.save();
+    console.log(image)
+    return res.status(200).json({ msg: 'Blog created successfully', imagePath: image });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ msg: 'Internal Server Error' });
   }
-  catch(err){
-      console.log(err)
-  }
-  const BlogId=BlogData._id
-  return  res.send({"newBlogData":BlogData,msg:'successfully created'})
-})
+});
+
+
+// app.post('/newblog',upload.single('avatar'), async(req,res,next)=>{
+//   console.log("BloData in backend:",req.body)
+//   const {title,category,des,state,by,image} = req.body
+//   if(title=='' || category=='' || des==''){
+//       return  res.send({msg:'fill all details'})
+//   }
+//   const BlogData = new blogData({
+//       title,
+//       category,
+//       des,
+//       state,
+//       by,
+//       image
+//   })
+//   try{
+//       BlogData.save()
+//   }
+//   catch(err){
+//       console.log(err)
+//   }
+//   const BlogId=BlogData._id
+//   return  res.send({"newBlogData":BlogData,msg:'successfully created'})
+// })
 
 
 app.post('/login', async (req,res,next) => {

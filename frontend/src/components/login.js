@@ -12,7 +12,7 @@ export default function Login() {
     const  handleLogin = (e) => {
         e.preventDefault(); 
         
-        axios.post('http://localhost:5001/login',logindata).then((res)=>{
+        axios.post('http://localhost:5002/login',logindata).then((res)=>{
             console.log(logindata,res.data.id)
             if(res.data.msg === 'success') {
                 alert('login successfully')

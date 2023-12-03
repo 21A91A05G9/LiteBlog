@@ -1,7 +1,6 @@
 import React from 'react'
 import Logo from '../images/bg.jpg'
 import Like from './like'
-
 export default function card(props) {
 
   function Text(text, limit) {
@@ -12,6 +11,7 @@ export default function card(props) {
       return text.slice(0, limit) + "...";
     }
   }
+  const imagePath="http://localhost:5002/images/image-1701592466504-874478909.jpg"
   return (
     
     <div class="col-md-3 ">
