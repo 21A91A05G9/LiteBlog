@@ -3,13 +3,19 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
 import path from "path";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import multer from "multer";
 import register from "./models/register";
 import blogData from "./models/blogdata";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const app=express();
 app.use(bodyParser.json())
 app.use(cors())
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 mongoose.connect('mongodb+srv://vasavi_08:6H0ofPCG4sjWVhxt@cluster0.yhpakpu.mongodb.net/DriveReady?retryWrites=true&w=majority')
 .then(()=> app.listen(5002))
 .then(()=>console.log("Connected to Database & Listening to localhost 5002"))

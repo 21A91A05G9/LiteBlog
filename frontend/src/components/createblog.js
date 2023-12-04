@@ -7,7 +7,7 @@ export default function Createblog() {
     const { id } = useParams();
     console.log("id", id);
     const [blogId,setBlogId]= useState(undefined);
-
+    const [imageurl,setImageurl] = useState("")
     useEffect(() => {
         if (id !== undefined) {
             axios.get('http://localhost:5002/getuser/' + id)
@@ -45,11 +45,11 @@ export default function Createblog() {
         formData.append('by', blogdata.by);
       
         axios
-          .post('http://localhost:5002/newblog', formData)
-          .then((res) => {
+          .post('http://localhost:5002/newblog', formData).then((res) => {
             alert(res.data.msg);
-            if (res.data.msg === 'successfully created') {
-              console.log("image path is",res.data.imagePath)
+            if (res.data.msg === 'Blog created successfully') {
+              
+              setImageurl(res.data.imagePath)
               setBlogId(res.data.newBlogData._id);
             }
           })
@@ -75,6 +75,7 @@ export default function Createblog() {
   return (
     <div className='container create'>
         <form onSubmit={handleNewBlog}>
+         
         <input type='file' accept='image/*' onChange={(e) => setBlogdata({ ...blogdata, image: e.target.files[0] })} />
         <h2 className='text-center pt-3'>Create New Blog {name}</h2>
         <div class="input-group input-group-lg my-2">
@@ -99,6 +100,16 @@ export default function Createblog() {
         <textarea className='p-3' value={blogdata.des} onChange={(e) => setBlogdata({ ...blogdata, des: e.target.value })}  style={{height:'370px', width:'100%'}} placeholder='Description'></textarea>
         </div>
         <button type='submit' className='btn btn-light'>published</button>
+        {imageurl && (
+        <div>
+          <p>Preview Image:</p>
+          <img
+            src={'http://localhost:5002/'+imageurl}
+            alt="Blog Preview"
+            style={{ maxWidth: '100%', height: 'auto' }}
+          />
+        </div>
+      )}
         </form>
     </div>
   )

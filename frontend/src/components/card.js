@@ -11,29 +11,22 @@ export default function card(props) {
       return text.slice(0, limit) + "...";
     }
   }
-  const imagePath="http://localhost:5002/images/image-1701592466504-874478909.jpg"
+  
   return (
     
-    <div class="col-md-3 ">
-      <article class="card cards">
-  <img
-    class="card__background"
-    src={Logo}
-    alt="Photo of Cartagena's cathedral at the background and some colonial style houses"
-    width="1920"
-    height="2193"
-  />
-  <div class="card__content | flow">
-    <div class="card__content--container | flow">
-      <h4 class="card__title ">{props.title}</h4>
-      <p class="card__description ">
-      {Text(props.des, 50)}
-      </p>
-      <div className='row'><p className='col-md-11'>written by-<br/>{props.by}</p></div>
-    </div>
-    <button class="card__button">Read more</button>
-  </div>
-</article>
+  <div class="col-md-3 my-3">
+    <article class="card cards">
+      {/* <img src="http://localhost:5002/images/animal.jpg" height={100} width={100} alt="Youriii Image" /> */}
+      <img class="card__background"src={`http://localhost:5002/${props.image}`} alt="Photo" width="1920" height="2193"/>
+      <div class="card__content | flow">
+      <div class="card__content--container | flow">
+        <h4 class="card__title mb-3">{props.title}</h4>
+        <p class="card__description ">{Text(props.des, 50)}</p>
+        <div className='offset-md-6 byname col-md-6'><p className='col '>by {props.by}</p></div>
+      </div>
+      </div>
+    </article>
+
     {/* <div class="card bg-light cards" >
       <img src={Logo} class="card-img-top" alt="..."/>
       <div class="card-body">
@@ -42,9 +35,8 @@ export default function card(props) {
       </div>
       <div className='row'><p className='col-md-2'><Like title={props.title} des={props.des} by={props.by} category={props.category} state={props.state} /></p><p className='col-md-9'>{props.category}</p></div>
       <div className='row'><p className='col-md-11'>by &nbsp;{props.by}</p></div>
-      
-      
     </div> */}
+
   </div>
     
   )
