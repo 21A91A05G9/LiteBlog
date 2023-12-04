@@ -14,7 +14,7 @@ export default function Home() {
   const [txt,settxt] = useState("")
   const [usr,setUsr] = useState(undefined)
   const {id} = useParams();
-  const [category,setCategory] = useState("x")
+  const [category,setCategory] = useState("")
    
   useEffect(()=>{
     if(id!=undefined){

@@ -42,7 +42,7 @@ export default function Register() {
         <div className='container login'>
         <div className="card loginform">
         
-                <div className='header mb-3'>Register here</div>
+                <div className='header mb-3 mt-3'>Register here</div>
               
                 <div className="container-fluid">
                 
@@ -73,7 +73,7 @@ export default function Register() {
                     </div>
                 </div>
                 <div className='text-center mb-2'><button  className="btn btn-light btn-sm" >Register</button></div>   
-                <div className='text-center mt-1'><p>Already have an account? <Link to='/login'>Login</Link></p></div>
+                <div className='text-center mt-1'><p className='login-footer'>Already have an account? <Link to='/login'>Login</Link></p></div>
 
                 </form>
                

@@ -58,49 +58,48 @@ export default function Createblog() {
           });
     };
       
-    // const  handleNewBlog = (e) => {
-        
-    //     console.log(blogdata.image)
-    //     e.preventDefault();
-    //     axios.post('http://localhost:5001/newblog',blogdata).then((res)=>{
-    //             alert(res.data.msg)
-                
-    //             if(res.data.msg==='successfully created'){
-    //                 // nav('/login/')
-    //                 setBlogId(res.data.BlogId)
-    //             }
-            
-    //     }) 
-    // }
   return (
-    <div className='container create'>
+    <div className='container-fluid create'>
+        <div className='container'>
+        <h2 className='text-center pt-3 pb-5 blogHead'>Create Your Own Blog</h2>
         <form onSubmit={handleNewBlog}>
-         
-        <input type='file' accept='image/*' onChange={(e) => setBlogdata({ ...blogdata, image: e.target.files[0] })} />
-        <h2 className='text-center pt-3'>Create New Blog {name}</h2>
-        <div class="input-group input-group-lg my-2">
-        <span class="input-group-text" id="inputGroup-sizing-lg">Category</span>
-        <select  value={blogdata.category} onChange={(e) => setBlogdata({ ...blogdata, category: e.target.value })}>
+         <div className='row'>
 
-            <option>Art</option>
-            <option>Music</option>
-            <option>Sports</option>
-            <option>Education</option>
-            <option>Business</option>
-        </select>
-        </div>
+            <div className='col-md-6 image-div '><input type='file'  accept='image/*' onChange={(e) => setBlogdata({ ...blogdata, image: e.target.files[0] })} /></div>
+            
+            <div className=' offset-1 col-md-6'>
 
-        <div class="input-group input-group-lg my-2">
-        <span class="input-group-text" id="inputGroup-sizing-lg">Title</span>
-        <input type="text titletxt" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value={blogdata.title}
-        onChange={(e) => setBlogdata({ ...blogdata, title: e.target.value })}/>  
+            <div class="input-group mb-3 mt-2">
+              <input type="text"  className=' blog-text' aria-label="Sizing example input" placeholder='Title Of The Blog' size='35' aria-describedby="inputGroup-sizing-lg" value={blogdata.title}onChange={(e) => setBlogdata({ ...blogdata, title: e.target.value })}/>  
+              &nbsp; &nbsp;
+              <select class="form-control select"  value={blogdata.category} onChange={(e) => setBlogdata({ ...blogdata, category: e.target.value })}>
+                  <option>Select Category</option>
+                  <option>Art</option>
+                  <option>Music</option>
+                  <option>Sports</option>
+                  <option>Education</option>
+                  <option>Business</option>
+              </select>
+              
+            </div>
+            <textarea className='p-3' value={blogdata.des} onChange={(e) => setBlogdata({ ...blogdata, des: e.target.value })}  style={{height:'250px', width:'100%'}} placeholder='Text Your Toughts...:)'></textarea>
+            <div className='row mt-4 text-center'>
+             <button type='submit' className='offset-2 col-2 btn btn-light'>published</button>
+            </div>
+            </div>
+          </div>
+          
+          
+        </form>
         </div>
-       
-        <div>
-        <textarea className='p-3' value={blogdata.des} onChange={(e) => setBlogdata({ ...blogdata, des: e.target.value })}  style={{height:'370px', width:'100%'}} placeholder='Description'></textarea>
-        </div>
-        <button type='submit' className='btn btn-light'>published</button>
-        {imageurl && (
+    </div>
+  )
+}
+
+      
+             
+              
+        {/* {imageurl && (
         <div>
           <p>Preview Image:</p>
           <img
@@ -109,8 +108,6 @@ export default function Createblog() {
             style={{ maxWidth: '100%', height: 'auto' }}
           />
         </div>
-      )}
-        </form>
-    </div>
-  )
-}
+      )} */}
+       
+          

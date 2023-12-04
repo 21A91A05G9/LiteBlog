@@ -44,7 +44,7 @@ export default function Login() {
         <div className='container-fluid login'>
         <div className="card loginform">
         
-                <div className='header mb-3'>Login here</div>
+                <div className='header mb-3 mt-3'>Login here</div>
               
                 <div className="container-fluid">
                 
@@ -63,7 +63,7 @@ export default function Login() {
                     </div>
                 </div>
                 <div className='text-center mb-2'><button  className="btn btn-light btn-sm" >Login</button></div>   
-                <div className='text-center mt-1'><p>Don't have an account? <Link to='/register'>Register</Link></p></div>
+                <div className='text-center mt-1'><p className='login-footer'>Don't have an account? <Link to='/register'>Register</Link></p></div>
 
                 </form>
                

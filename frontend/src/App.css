@@ -24,7 +24,9 @@
     align-items: center;
     align-content: center;
     justify-content: center;
-    
+  }
+  .login-footer{
+    color: #1d4d57 !important;
   }
   .navbar{
     background-color: #3c565b !important;
@@ -48,8 +50,7 @@
     text-align: center;
     font-weight: bolder;
     color:rgb(244, 135, 45);
-    color:rgb(255, 200, 0);
-    text-shadow: black;
+    color:rgb(79, 65, 14);
     text-transform: uppercase;
     
   }
@@ -155,6 +156,35 @@
   }
   .create{
     height: 100vh;
+    background-color: #1d4d57;
+  }
+  .blog-text{
+    background-color: white !important;
+    border-radius: 5px !important;
+  }
+  .select{
+    border-radius: 5px;
+  }
+  
+  .blogHead{
+    color: rgb(255, 187, 0);
+  }
+  .image-div{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 400px;
+    width: 400px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 50px rgba(34, 39, 39, 0.6);
+    background-image: url('images/blogbg.jpg');
+    background-size: cover;
+  }
+  .image-div input{
+    width: 110px;
+    border: none;
   }
   .NoBlog{
     position: relative;
