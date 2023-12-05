@@ -1,13 +1,18 @@
 import React, { useState ,useEffect} from 'react'
 import axios from 'axios'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams ,Link} from 'react-router-dom'
+import image from '../images/upload.jpg'
+import UserNavbar from './userNavbar'
 export default function Createblog() {
+    
+
     // const nav = useNavigate()
     const [name, setName] = useState("");
     const { id } = useParams();
     console.log("id", id);
     const [blogId,setBlogId]= useState(undefined);
     const [imageurl,setImageurl] = useState("")
+    const [img,setImg] = useState(image)
     useEffect(() => {
         if (id !== undefined) {
             axios.get('http://localhost:5002/getuser/' + id)
@@ -26,7 +31,7 @@ export default function Createblog() {
         by: "",
         image:null
     });
-    console.log("image name is",blogdata)
+    
     useEffect(() => {
     
         setBlogdata(prevData => ({...prevData,by: name}) );
@@ -59,20 +64,22 @@ export default function Createblog() {
     };
       
   return (
-    <div className='container-fluid create'>
-        <div className='container'>
+    <>
+      <UserNavbar/>
+      <div className='container-fluid createMain'>
+      
+        <div className='containerfluid'>
         <h2 className='text-center pt-3 pb-5 blogHead'>Create Your Own Blog</h2>
         <form onSubmit={handleNewBlog}>
-         <div className='row'>
+         <div className='row create'>
 
-            <div className='col-md-6 image-div '><input type='file'  accept='image/*' onChange={(e) => setBlogdata({ ...blogdata, image: e.target.files[0] })} /></div>
-            
-            <div className=' offset-1 col-md-6'>
+            <div className='col-md-5 image-div' style={{ backgroundImage: `url(${typeof img === 'string' ?img:URL.createObjectURL(img)})` }}><input type='file'  accept='image/*' onChange={(e) =>{  setBlogdata({ ...blogdata, image: e.target.files[0] }); setImg(e.target.files[0])}} /></div>
+            <div className='col-md-6'>
 
-            <div class="input-group mb-3 mt-2">
-              <input type="text"  className=' blog-text' aria-label="Sizing example input" placeholder='Title Of The Blog' size='35' aria-describedby="inputGroup-sizing-lg" value={blogdata.title}onChange={(e) => setBlogdata({ ...blogdata, title: e.target.value })}/>  
+            <div class="input-group mb-2 mt-2">
+              <input type="text"  className='col-md-6 blog-text p-2' aria-label="Sizing example input" placeholder='Title Of The Blog' aria-describedby="inputGroup-sizing-lg" value={blogdata.title}onChange={(e) => setBlogdata({ ...blogdata, title: e.target.value })}/>  
               &nbsp; &nbsp;
-              <select class="form-control select"  value={blogdata.category} onChange={(e) => setBlogdata({ ...blogdata, category: e.target.value })}>
+              <select class="col-md-6 form-control select p-2" value={blogdata.category} onChange={(e) => setBlogdata({ ...blogdata, category: e.target.value })}>
                   <option>Select Category</option>
                   <option>Art</option>
                   <option>Music</option>
@@ -82,32 +89,26 @@ export default function Createblog() {
               </select>
               
             </div>
-            <textarea className='p-3' value={blogdata.des} onChange={(e) => setBlogdata({ ...blogdata, des: e.target.value })}  style={{height:'250px', width:'100%'}} placeholder='Text Your Toughts...:)'></textarea>
-            <div className='row mt-4 text-center'>
-             <button type='submit' className='offset-2 col-2 btn btn-light'>published</button>
-            </div>
+            <textarea className='p-3 mt-1' value={blogdata.des} onChange={(e) => setBlogdata({ ...blogdata, des: e.target.value })}  style={{height:'255px', width:'100%'}} placeholder='Text Your Toughts...✏️'></textarea>
+             <div className='mt-4'>
+             <button type='submit' className='offset-10 btn create-btn'>Publish</button>
+             {/* <Link to={'/'+id}><button type='button' className='offset-1 btn create-btn'>Back</button></Link> */}
+             </div>
+           
             </div>
           </div>
           
           
         </form>
         </div>
+       {/* Add this in the render method */}
     </div>
+    </>
   )
 }
 
       
              
-              
-        {/* {imageurl && (
-        <div>
-          <p>Preview Image:</p>
-          <img
-            src={'http://localhost:5002/'+imageurl}
-            alt="Blog Preview"
-            style={{ maxWidth: '100%', height: 'auto' }}
-          />
-        </div>
-      )} */}
+    
        
           

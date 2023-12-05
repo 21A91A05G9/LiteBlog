@@ -8,7 +8,7 @@ export default function UserNavbar(props) {
   return (
     <>
     <div>
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar bg-body-tertiary fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
          
@@ -20,7 +20,7 @@ export default function UserNavbar(props) {
         
         <Link to={'/createblog/'+props.id}><button  type="submit" className='btn-sm btn d-flex mx-3'>Create New Blog</button></Link>
         
-        <div class="dropdown">
+        {/* <div class="dropdown">
           <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             {props.name}
           </button>
@@ -29,7 +29,7 @@ export default function UserNavbar(props) {
             <li><Link to='/register' className='dropdown-item' href="#">Profile</Link></li>
 
           </ul>
-        </div>
+        </div> */}
         </p>
         
       </div>

@@ -8,7 +8,7 @@ export default function Navbar() {
   return (
     <>
     <div>
-    <nav class="navbar bg-body-tertiary ">
+    <nav class="navbar bg-body-tertiary fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
          

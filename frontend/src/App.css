@@ -1,4 +1,6 @@
-
+body{
+  background-color: #ebebeb;
+}
 .unlikeButton {
   color: rgb(194, 193, 193);
   cursor: pointer;
@@ -29,7 +31,8 @@
     color: #1d4d57 !important;
   }
   .navbar{
-    background-color: #3c565b !important;
+    background-color:#3b2d01 !important;
+    
   }
   .dropdown-toggle{
     background-color: transparent;
@@ -90,6 +93,17 @@
     padding: 0px;
     
   }
+  .bg h1{
+    margin-top: 200px;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 44px;
+    color: #3b2d01;
+  }
+  .bg p{
+    text-align: center;
+    color: #3b2d01;
+    font-size: medium;
+  }
   .offcanvas.offcanvas-start {
     position: relative;
     top:0px; 
@@ -102,24 +116,33 @@
   .offcanvas{
     background-color: transparent;
   }
-  .categoryHead{
-    text-transform: uppercase;
-    color: rgb(6, 2, 0);
-    position: relative;
-    font-weight: bolder;
-    
+
+ 
+  .bg{
+    height: 100vh;
+    background-image: url('images/mainbg.jpg');
+    background-size: cover;
+  }
+  .title-search{
+    margin-top: 70px;
   }
   .category{
-    background-color: white;
-    width: 70px;
-    padding: 2px 5px;
+    width: fit-content;
+    padding: 0px 10px;
     border-radius: 20px;
     font-weight: bolder;
     text-align: center;
-    
+    font-size: medium;
+    text-align: center;
+    box-shadow: 1px 1px 5px rgb(70, 69, 69);
+    background-color:#e2c58d;
+    margin:0px 10px ;
   }
   .categoryBtn{
+    position: relative;
+    top:10px;
     padding: 0px;
+    border: none;
   }
   
   
@@ -149,42 +172,81 @@
     padding-bottom: 5px;
   }
   .input-group-lg input{
-    background-color: white !important;
+    background-color:#d6cfbf !important;
   }
   textarea{
     font-size: 15px;
   }
-  .create{
+  .createMain{
     height: 100vh;
-    background-color: #1d4d57;
+    background-color:#e2c58d;
   }
+  .create{
+    display: flex;
+   
+    justify-content: center;
+
+  }
+
   .blog-text{
     background-color: white !important;
     border-radius: 5px !important;
+    box-shadow: 1px 1px 15px rgba(37, 28, 9, 0.3),inset 1px 1px 10px rgba(52, 44, 16, 0.3) ;
+    border: 1px solid rgb(94, 72, 39,0.6);
   }
   .select{
     border-radius: 5px;
+    box-shadow: 1px 1px 15px rgba(37, 28, 9, 0.3),inset 1px 1px 10px rgba(52, 44, 16, 0.3) ;
+    border: 1px solid rgb(94, 72, 39,0.6);
+    color: #493e10;
   }
-  
+  .create-btn{
+    background-color: #725e45;
+    color: white;
+  }
+  .create-btn:hover{
+    background-color: #473b0a !important;
+    color: white;
+    scale: 1.1;
+  }
   .blogHead{
-    color: rgb(255, 187, 0);
+    color: rgb(69, 58, 26);
   }
-  .image-div{
+  .image-div,.singleimg{
     display: flex;
     justify-content: center;
     align-content: center;
     align-items: center;
-    height: 400px;
-    width: 400px;
-    background-color: white;
+    height: 20rem;
+    width: 20rem;
+   
     border-radius: 5px;
     box-shadow: 5px 5px 50px rgba(34, 39, 39, 0.6);
-    background-image: url('images/blogbg.jpg');
+    overflow: hidden;
+    margin: 0px 30px;
+  }
+  .image-div{
+    background-image: url('images/upload.jpg');
     background-size: cover;
   }
+  textarea{
+    background-color: #d6cfbf;
+    font-size: medium;
+    box-shadow: 2px 2px 20px rgba(57, 43, 12, 0.4),inset 2px 2px 80px rgba(192, 192, 192, 0.5) ;
+    
+  }
+  textarea::placeholder{
+    font-size: medium;
+    color: #a09d98;
+  }
   .image-div input{
-    width: 110px;
+    position: relative;
     border: none;
+    height: 40px;
+    width: 40px;
+    scale: 15;
+    cursor: pointer;
+    opacity: 0;
   }
   .NoBlog{
     position: relative;
@@ -195,15 +257,25 @@
     justify-content: center;
   }
   h2{
-    color: #31535a;
+    color: #503e1e;
     font-weight: bolder;
   }
+  .single-des{
+    text-align: justify;
+    color: #362508;
+    font-size: larger;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
   .search{
-    background-color: rgb(255, 255, 255) !important;
-    box-shadow: 2px 2px 2px rgb(161, 161, 161),inset 2px 2px 2px rgb(210, 209, 209);
+    background-color:#725e45 !important;
+    box-shadow: 2px 2px 2px  #523b20,inset 2px 2px 2px #523b20;
     border: none;
     border-radius: 20px;
-    padding-left: 10px
+    color:#ece3ce;
+    padding: 8px 20px;
+  }
+  .search::placeholder{
+    color:#d6cfbf;
   }
   /* @media  (min-width:350px) and (max-width:600px) { */
     /* .cards{
@@ -246,7 +318,7 @@ body{
 
 .area{
     background:  rgb(255, 136, 0);
-    background-color: #3c565b;
+    background-color:#5e5c5a;
     width: 100%;
     height:100vh;
     
@@ -268,7 +340,7 @@ body{
     list-style: none;
     width: 20px;
     height: 20px;
-    background:  #61858c;
+    background: #787775;
     animation: animate 25s linear infinite;
     bottom: -150px;
     

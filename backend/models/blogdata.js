@@ -27,4 +27,4 @@ const blog = new schema({
         required:true
     }
 })
-export default mongoose.model('newBlogData',blog)
+export default mongoose.model('newBlogData',blog) 

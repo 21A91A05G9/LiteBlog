@@ -1,8 +1,8 @@
 import React from 'react'
 import Logo from '../images/bg.jpg'
 import Like from './like'
-export default function card(props) {
-
+import { Link} from 'react-router-dom';
+export default function Card(props) {
   function Text(text, limit) {
     if (text.length <= limit) {
       return text;
@@ -15,6 +15,7 @@ export default function card(props) {
   return (
     
   <div class="col-md-3 my-3">
+    <Link to='/viewBlog'>
     <article class="card cards">
       {/* <img src="http://localhost:5002/images/animal.jpg" height={100} width={100} alt="Youriii Image" /> */}
       <img class="card__background"src={`http://localhost:5002/${props.image}`} alt="Photo" width="1920" height="2193"/>
@@ -26,7 +27,7 @@ export default function card(props) {
       </div>
       </div>
     </article>
-
+    </Link>
     {/* <div class="card bg-light cards" >
       <img src={Logo} class="card-img-top" alt="..."/>
       <div class="card-body">
