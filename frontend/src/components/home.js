@@ -7,8 +7,8 @@ import UserNavbar from './userNavbar'
 import Card from './card'
 import DisplayBlogdata from './displayBlogdata'
 import Sidebar from './sidebar'
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 export default function Home() {
   const [searchResult,setSearchResult] = useState([]);
   const [key,setKey] = useState("");
@@ -55,9 +55,13 @@ export default function Home() {
           usr? <UserNavbar name={usr} id={id}/> : <Navbar/>
         }
         
-        <div className='' style={{backgroundColor:'#d6cfbf'}}>
-              <SingleBlog/>
-          
+        <div className='' >
+          <div className='bg container-fluid'>
+            <div className='row'>
+              <h1 className='offset-1 col-md-6 '>Sip from the cup of inspiration, let fresh ideas percolate, and weave your own blog narrative! </h1><p > Start writing your unique story... ✏️</p>
+            </div>
+          </div>
+        </div>
              {/* <div class="offcanvas offcanvas-start sidebar show" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel"  aria-modal="true" role="dialog">      
             <div class="offcanvas-body">
                 <button className='categoryBtn btn'><p onClick={()=>setCategory("Art")}  className='category'>Art</p></button>
@@ -69,6 +73,7 @@ export default function Home() {
             </div>
             </div>
             <button class="btn categoryHead col-md-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"> Categories</button> */}
+          <div style={{backgroundColor:'#d6cfbf',height:'90vh'}}>
            {
            blogdata.slice(0,1).map((e,i)=>{
             return(
@@ -79,33 +84,33 @@ export default function Home() {
                         <input class=" search col-11 " type="search bg-secondary" placeholder="Search by name or title" value={key} onChange={(e)=>{setKey(e.target.value)}} aria-label="Search"/>
                       </div> 
                       </div> */}
-
-                      <div className='row'>
-                      <div className='sigleimg text-center col-md-5'> <img src={`http://localhost:5002/${e.image}`} alt="Photo" width="auto" height="303"/></div>
-                      <div className='col-md-6'>
-                          <h2 className=' '>{e.title}</h2>
-                          <div className='single-des'>{e.des}</div>
-                      </div>
-                      </div>
+                     <div className='pt-5'>
+                      {/* <h2 className='container my-4 text-center'>Top Rated Blog</h2> */}
+                     <SingleBlog image={e.image} des={e.des} title={e.title}/>
+                     </div>
+                    
                 </div>
             )
          })
           } 
         </div>
-        <div className='container-fluid' style={{backgroundColor:'#c4b3a9'}}>
-            <div className='row py-5 '>
-             
-              <div className=' col-md-6 categoryHead'>
-                <button className='categoryBtn btn'><p onClick={()=>setCategory("All")}  className='category'>All</p></button>
-                <button className='categoryBtn btn'><p onClick={()=>setCategory("Art")}  className='category'>Art</p></button>
-                <button className='categoryBtn btn'><p onClick={()=>setCategory("Business")}  className='category'>Business</p></button>
-                <button className='categoryBtn btn'><p onClick={()=>setCategory("Education")}  className='category'>Education</p></button>
-                <button className='categoryBtn btn'><p onClick={()=>setCategory("Music")}  className='category'>Music</p></button>
-                <button className='categoryBtn btn'><p onClick={()=>setCategory("Sports")}  className='category'>Sports</p></button>
-                <button className='categoryBtn btn'><p onClick={()=>setCategory("")}  className='category'>x</p></button>
+        
+        <div className='container-fluid' style={{backgroundColor:'#d6c7ab',height:'100vh'}}>
+            <div className='row pt-5  pb-3'>
+              <div className='col-md-1'></div>
+              <div className='col-md-6  categoryHead scrollport text-center'>
+                <button className='categoryBtn  btn'><p onClick={()=>setCategory("All")}  className='category'>All</p></button>
+                <button className='categoryBtn  btn'><p onClick={()=>setCategory("Art")}  className='category'>Art</p></button>
+                <button className='categoryBtn  btn'><p onClick={()=>setCategory("Business")}  className='category'>Business</p></button>
+                <button className='categoryBtn  btn'><p onClick={()=>setCategory("Education")}  className='category'>Education</p></button>
+                <button className='categoryBtn  btn'><p onClick={()=>setCategory("Music")}  className='category'>Music</p></button>
+                <button className='categoryBtn  btn'><p onClick={()=>setCategory("Sports")}  className='category'>Sports</p></button>
+                <button className='categoryBtn  btn'><p onClick={()=>setCategory("")}  className='category'>x</p></button>
               </div>
-              <div className=' text-center col-md-4'>
-                <input class=" search col-12 my-2" type="search bg-secondary" placeholder="Search by name or title" value={key} onChange={(e)=>{setKey(e.target.value)}} aria-label="Search"/>
+              <div className=' text-center col-md-5 text-center'>
+                
+                <input class=" search col-8 my-2" type="search bg-secondary" placeholder="Search by name or title" value={key} onChange={(e)=>{setKey(e.target.value)}} aria-label="Search"/>
+                <FontAwesomeIcon icon={faSearch} className='searchicon'></FontAwesomeIcon>
               </div>
 
             </div>

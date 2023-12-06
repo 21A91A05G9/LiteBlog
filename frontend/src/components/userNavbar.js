@@ -18,18 +18,18 @@ export default function UserNavbar(props) {
         <p className=" d-flex">
 
         
-        <Link to={'/createblog/'+props.id}><button  type="submit" className='btn-sm btn d-flex mx-3'>Create New Blog</button></Link>
-        
-        {/* <div class="dropdown">
-          <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <Link to={'/createblog/'+props.id}><button  type="submit" className='btn-sm  d-flex mx-3'>Create New Blog</button></Link>
+       
+        <div class="dropdown">
+          <button class=" dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             {props.name}
           </button>
-          <ul class="dropdown-menu bg-secondary">
-            <li><Link to='/login' class="dropdown-item">SIGN OUT</Link></li>
-            <li><Link to='/register' className='dropdown-item' href="#">Profile</Link></li>
-
+          <ul class="dropdown-menu">
+            <Link to='/login'><li class="dropdown-item">SIGN OUT</li></Link>
+            <Link to={'/profile/'+props.id}><li  className='dropdown-item'>Profile</li></Link>
+       
           </ul>
-        </div> */}
+        </div>
         </p>
         
       </div>

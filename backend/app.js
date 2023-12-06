@@ -8,6 +8,7 @@ import { dirname } from 'path';
 import multer from "multer";
 import register from "./models/register";
 import blogData from "./models/blogdata";
+import blogdata from "./models/blogdata";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -209,6 +210,26 @@ app.get('/getuser/:id', (req, res, next) => {
     res.send({userName:user.name})
   })
 });
+
+app.get('/getuserblogs/:id', (req,res,next)=>{
+  const _id = req.params.id 
+  console.log("id id",_id)
+    register.find({"_id":_id}).then((user)=>{
+      const Name= user.name;
+      const  usrName=user.username
+      const userBlogs =  blogData.find({"by":usrName});
+      console.log(Name,usrName)
+      try{
+        if(userBlogs){
+            return res.send({"userBlogs":userBlogs},{"name":Name})
+        }
+      }
+      catch(err){
+        return res.send("no id found")
+      }
+    })
+  
+})
 
 app.get('/getId', (req, res, next) => {
   const title = req.query.title;

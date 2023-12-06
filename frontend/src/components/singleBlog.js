@@ -1,11 +1,13 @@
 import React from 'react'
 
-export default function singleBlog() {
+export default function singleBlog(props) {
   return (
-    <div className='bg container-fluid'>
-      <div className='row'>
-        <h1 className='offset-1 col-md-6 '>Sip from the cup of inspiration, let fresh ideas percolate, and weave your own blog narrative! </h1><p > Start writing your unique story... ✏️</p>
-      </div>
+    <div className='row'>
+    <div className='sigleimg text-center col-md-5'> <img src={`http://localhost:5002/${props.image}`} alt="Photo" width="auto" height="303"/></div>
+    <div className='col-md-6'>
+        <h2 className=' '>{props.title}</h2>
+        <div className='single-des'>{props.des}</div>
+    </div>
     </div>
   )
 }

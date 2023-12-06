@@ -65,21 +65,21 @@ export default function Createblog() {
       
   return (
     <>
-      <UserNavbar/>
+      <UserNavbar name={name} id={id}/>
       <div className='container-fluid createMain'>
       
         <div className='containerfluid'>
-        <h2 className='text-center pt-3 pb-5 blogHead'>Create Your Own Blog</h2>
+        <h2 className='text-center  blogHead'>Create Your Own Blog</h2>
         <form onSubmit={handleNewBlog}>
          <div className='row create'>
 
             <div className='col-md-5 image-div' style={{ backgroundImage: `url(${typeof img === 'string' ?img:URL.createObjectURL(img)})` }}><input type='file'  accept='image/*' onChange={(e) =>{  setBlogdata({ ...blogdata, image: e.target.files[0] }); setImg(e.target.files[0])}} /></div>
             <div className='col-md-6'>
 
-            <div class="input-group mb-2 mt-2">
-              <input type="text"  className='col-md-6 blog-text p-2' aria-label="Sizing example input" placeholder='Title Of The Blog' aria-describedby="inputGroup-sizing-lg" value={blogdata.title}onChange={(e) => setBlogdata({ ...blogdata, title: e.target.value })}/>  
-              &nbsp; &nbsp;
-              <select class="col-md-6 form-control select p-2" value={blogdata.category} onChange={(e) => setBlogdata({ ...blogdata, category: e.target.value })}>
+            <div class=" mb-2 mt-2">
+              <input type="text"  className='col-md-7 blog-text p-2 me-4' aria-label="Sizing example input" placeholder='Title Of The Blog' aria-describedby="inputGroup-sizing-lg" value={blogdata.title}onChange={(e) => setBlogdata({ ...blogdata, title: e.target.value })}/>  
+           
+              <select class="col-md-4  select p-2" value={blogdata.category} onChange={(e) => setBlogdata({ ...blogdata, category: e.target.value })}>
                   <option>Select Category</option>
                   <option>Art</option>
                   <option>Music</option>
@@ -89,9 +89,9 @@ export default function Createblog() {
               </select>
               
             </div>
-            <textarea className='p-3 mt-1' value={blogdata.des} onChange={(e) => setBlogdata({ ...blogdata, des: e.target.value })}  style={{height:'255px', width:'100%'}} placeholder='Text Your Toughts...✏️'></textarea>
+             <div className='textarea'> <textarea className='p-3 mt-1' value={blogdata.des} onChange={(e) => setBlogdata({ ...blogdata, des: e.target.value })}   placeholder='Text Your Toughts...'></textarea></div>
              <div className='mt-4'>
-             <button type='submit' className='offset-10 btn create-btn'>Publish</button>
+             {/* <button type='submit' className='offset-10 btn create-btn'>Publish</button> */}
              {/* <Link to={'/'+id}><button type='button' className='offset-1 btn create-btn'>Back</button></Link> */}
              </div>
            

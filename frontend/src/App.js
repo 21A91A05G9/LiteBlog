@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/home';
 import Createblog from './components/createblog';
 import ViewBlog from './components/viewBlog';
+import Profile from './components/profile';
 export default function App() {
 
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/viewBlog' element={<ViewBlog/>}/>
           <Route path='/createblog/:id' element={<Createblog/>}/>
+          <Route path='/profile/:id' element={<Profile/>}/>
         </Routes>
       </BrowserRouter>
       
