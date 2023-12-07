@@ -202,6 +202,7 @@ app.get('/getCategory', async (req,res,next)=>{
   
 })
 
+
 app.get('/getuser/:id', (req, res, next) => {
   const _id = req.params.id;
     console.log(_id)
@@ -211,25 +212,27 @@ app.get('/getuser/:id', (req, res, next) => {
   })
 });
 
-app.get('/getuserblogs/:id', (req,res,next)=>{
-  const _id = req.params.id 
-  console.log("id id",_id)
-    register.find({"_id":_id}).then((user)=>{
-      const Name= user.name;
-      const  usrName=user.username
-      const userBlogs =  blogData.find({"by":usrName});
-      console.log(Name,usrName)
-      try{
-        if(userBlogs){
-            return res.send({"userBlogs":userBlogs},{"name":Name})
-        }
-      }
-      catch(err){
-        return res.send("no id found")
-      }
-    })
-  
-})
+app.get('/getuserblogs/:id', async (req, res, next) => {
+  try {
+    const _id = req.params.id;
+    console.log(_id);
+    const user = await register.findOne({ "_id": _id });
+    const userblogs = await blogData.find({ "by": user.name });
+    const Name=user.name
+    const artblogs = await blogData.find({ "category": 'Art', "by": user.name });
+    const musicblogs = await blogData.find({ "category": 'Music', "by": user.name });
+    const businessblogs = await blogData.find({ "category": 'Business', "by": user.name });
+    const sportblogs = await blogData.find({ "category": 'Sports', "by": user.name });
+    const educationblogs = await blogData.find({ "category": 'Education', "by": user.name });
+    return res.status(200).send({ userblogs, musicblogs ,businessblogs,sportblogs,artblogs,educationblogs,Name});
+  } 
+  catch (error) {
+    console.error("Error", error);
+    return res.status(500).send({ error: "Internal Server Error" });
+  }
+});
+
+
 
 app.get('/getId', (req, res, next) => {
   const title = req.query.title;

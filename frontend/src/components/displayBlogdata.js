@@ -19,7 +19,7 @@ export default function DisplayBlogdata(props) {
     },[])
   return (
     <div className='row'>
-    <div ><h2 className='mx-4 mt-4'>Trending Blogs</h2></div>
+    <div ><h2 className='mx-4 mt-4'>Latest Blogs</h2></div>
   
     {
          blogdata.slice(0,4).map((e,i)=>{

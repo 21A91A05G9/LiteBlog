@@ -58,6 +58,10 @@ body{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
     
   }
+  .profileBlog{
+    padding-top: 90px;;
+    height: fit-content;
+  }
   .btn-secondary{
     background-color: #3c565b !important;
   }

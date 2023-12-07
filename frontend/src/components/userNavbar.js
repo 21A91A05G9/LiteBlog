@@ -25,7 +25,7 @@ export default function UserNavbar(props) {
             {props.name}
           </button>
           <ul class="dropdown-menu">
-            <Link to='/login'><li class="dropdown-item">SIGN OUT</li></Link>
+            <Link to='/'><li class="dropdown-item">SIGN OUT</li></Link>
             <Link to={'/profile/'+props.id}><li  className='dropdown-item'>Profile</li></Link>
        
           </ul>
