@@ -22,7 +22,7 @@ export default function DisplayBlogdata(props) {
     <div ><h2 className='mx-4 mt-4'>Latest Blogs</h2></div>
   
     {
-         blogdata.slice(0,4).map((e,i)=>{
+         Object.values(blogdata).reverse().slice(0,4).map((e,i)=>{
             return(
                 <Card title={e.title} des={Text(e.des, 50)} description={e.des} state={e.state} category={e.category} by={e.by} image={e.image} id={props.id}/>
             )

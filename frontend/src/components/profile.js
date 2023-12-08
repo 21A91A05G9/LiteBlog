@@ -13,7 +13,7 @@ export default function Profile() {
     const [musicBlogs,setMusicBlogs] = useState([])
     const [sportBlogs,setSportBlogs] = useState([])
     const [businessBlogs,setBusinessBlogs] = useState([])
-    
+    const [cookingBlogs,setCookingBlogs] = useState([])
     useEffect(()=>{
       if(id!==undefined){
         axios.get('http://localhost:5002/getuserblogs/'+id).then((res)=>{
@@ -24,6 +24,7 @@ export default function Profile() {
           setBusinessBlogs(res.data.businessblogs)
           setSportBlogs(res.data.sportblogs)
           setEducationBlogs(res.data.educationblogs)
+          setCookingBlogs(res.data.cookingblogs)
           console.log(userBlogs)
         })
       }
@@ -45,13 +46,13 @@ export default function Profile() {
                     )
                   })
                  }
-             
+              
               </div>: <>No blogs are there..!</>
             }
            
-            <br></br>
+           
             {
-              artBlogs && artBlogs.length!==0?<div className='row'><h2>Art Blogs</h2>
+              artBlogs && artBlogs.length!==0?<div className='row mt-5'><h2>Art Blogs</h2>
                  {
                   artBlogs.map((e)=>{
                     return(
@@ -59,13 +60,15 @@ export default function Profile() {
                     )
                   })
                  }
-             
+               <br></br>
+
               </div>: <></>
+              
             }
            
-            <br></br>
+           
             {
-              musicBlogs && musicBlogs.length!==0?<div className='row'><h2>Music Blogs</h2>
+              musicBlogs && musicBlogs.length!==0?<div className='row mt-5'><h2>Music Blogs</h2>
                  {
                   musicBlogs.map((e)=>{
                     return(
@@ -73,13 +76,26 @@ export default function Profile() {
                     )
                   })
                  }
-             
+              <br></br>
               </div>: <></>
             }
-      
-            <br></br>
+            
+           
             {
-              sportBlogs && sportBlogs.length!==0?<div className='row'><h2>Sport Blogs</h2>
+              cookingBlogs && cookingBlogs.length!==0?<div className='row mt-5'><h2>Food Blogs</h2>
+                 {
+                  cookingBlogs.map((e)=>{
+                    return(
+                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image}/>
+                    )
+                  })
+                 }
+              <br></br>
+              </div>: <></>
+            }
+           
+            {
+              sportBlogs && sportBlogs.length!==0?<div className='row mt-5'><h2>Sport Blogs</h2>
                  {
                   sportBlogs.map((e)=>{
                     return(
@@ -87,13 +103,13 @@ export default function Profile() {
                     )
                   })
                  }
-           
+              <br></br>
               </div>: <></>
             }
              
-            <br></br>
+            
             {
-              educationBlogs && educationBlogs.length!==0?<div className='row'><h2>Education Blogs</h2>
+              educationBlogs && educationBlogs.length!==0?<div className='row mt-5'><h2>Education Blogs</h2>
                  {
                   educationBlogs.map((e)=>{
                     return(
@@ -102,12 +118,12 @@ export default function Profile() {
                   })
                  }
               
-             
+              <br></br>
               </div>: <></>
             }
-            <br></br>
+            
             {
-              businessBlogs && businessBlogs.length!==0?<div className='row'><h2>Business Blogs</h2>
+              businessBlogs && businessBlogs.length!==0?<div className='row mt-5'><h2>Business Blogs</h2>
                  {
                   businessBlogs.map((e)=>{
                     return(

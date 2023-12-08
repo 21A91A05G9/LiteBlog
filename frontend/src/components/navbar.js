@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../images/logo.png'
+import Logo from '../images/BL.jpg'
 import Sidebar from './sidebar'
 import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,8 +12,8 @@ export default function Navbar() {
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
          
-          <img src={Logo} alt="Logo" height={20} width={25} />    &nbsp;
-          <span>BlogLite</span>
+          {/* <img src={Logo} alt="Logo" height={20} width={25} />    &nbsp; */}
+          <span style={{color:'#f6efe0'}}><span style={{color:"var(--brand-color)"}}>B</span>logLite</span>
         </a>
         <p className=" d-flex">
 

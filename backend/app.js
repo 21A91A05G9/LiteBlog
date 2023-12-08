@@ -65,7 +65,7 @@ app.post('/newblog', upload.single('image'), (req, res) => {
   const image = req.file.path; // Save the image path
 
   // Validate other fields
-  if (title === '' || category === '' || des === '') {
+  if (title === '' || category === '' || des === '' || image === '') {
     return res.status(400).json({ msg: 'Fill in all details' });
   }
 
@@ -88,31 +88,6 @@ app.post('/newblog', upload.single('image'), (req, res) => {
     return res.status(500).json({ msg: 'Internal Server Error' });
   }
 });
-
-
-// app.post('/newblog',upload.single('avatar'), async(req,res,next)=>{
-//   console.log("BloData in backend:",req.body)
-//   const {title,category,des,state,by,image} = req.body
-//   if(title=='' || category=='' || des==''){
-//       return  res.send({msg:'fill all details'})
-//   }
-//   const BlogData = new blogData({
-//       title,
-//       category,
-//       des,
-//       state,
-//       by,
-//       image
-//   })
-//   try{
-//       BlogData.save()
-//   }
-//   catch(err){
-//       console.log(err)
-//   }
-//   const BlogId=BlogData._id
-//   return  res.send({"newBlogData":BlogData,msg:'successfully created'})
-// })
 
 
 app.post('/login', async (req,res,next) => {
@@ -224,7 +199,8 @@ app.get('/getuserblogs/:id', async (req, res, next) => {
     const businessblogs = await blogData.find({ "category": 'Business', "by": user.name });
     const sportblogs = await blogData.find({ "category": 'Sports', "by": user.name });
     const educationblogs = await blogData.find({ "category": 'Education', "by": user.name });
-    return res.status(200).send({ userblogs, musicblogs ,businessblogs,sportblogs,artblogs,educationblogs,Name});
+    const cookingblogs = await blogData.find({ "category": 'Food', "by": user.name });
+    return res.status(200).send({ userblogs, musicblogs ,businessblogs,sportblogs,artblogs,educationblogs,cookingblogs,Name});
   } 
   catch (error) {
     console.error("Error", error);

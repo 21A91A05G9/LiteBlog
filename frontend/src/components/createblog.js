@@ -38,7 +38,7 @@ export default function Createblog() {
     }, [name]);
     const handleNewBlog = (e) => {
         e.preventDefault();
-      
+        
         const formData = new FormData();
         formData.append('image', blogdata.image); // assuming 'avatar' is the key expected by your backend
       
@@ -48,7 +48,7 @@ export default function Createblog() {
         formData.append('des', blogdata.des);
         formData.append('state', blogdata.state);
         formData.append('by', blogdata.by);
-      
+        
         axios
           .post('http://localhost:5002/newblog', formData).then((res) => {
             alert(res.data.msg);
@@ -61,6 +61,7 @@ export default function Createblog() {
           .catch((err) => {
             console.log(err);
           });
+
     };
       
   return (
@@ -84,6 +85,7 @@ export default function Createblog() {
                   <option>Art</option>
                   <option>Music</option>
                   <option>Sports</option>
+                  <option>Food</option>
                   <option>Education</option>
                   <option>Business</option>
               </select>
@@ -91,7 +93,7 @@ export default function Createblog() {
             </div>
              <div className='textarea'> <textarea className='p-3 mt-1' value={blogdata.des} onChange={(e) => setBlogdata({ ...blogdata, des: e.target.value })}   placeholder='Text Your Toughts...'></textarea></div>
              <div className='mt-4'>
-             {/* <button type='submit' className='offset-10 btn create-btn'>Publish</button> */}
+             <button type='submit' className='offset-10 btn create-btn'>Publish</button>
              {/* <Link to={'/'+id}><button type='button' className='offset-1 btn create-btn'>Back</button></Link> */}
              </div>
            

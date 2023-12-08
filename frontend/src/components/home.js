@@ -73,20 +73,17 @@ export default function Home() {
             </div>
             </div>
             <button class="btn categoryHead col-md-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"> Categories</button> */}
-          <div style={{backgroundColor:'#d6cfbf',height:'90vh'}}>
+          <div style={{backgroundColor:'#d6cfbf',height:'95vh'}}>
            {
-           blogdata.slice(0,1).map((e,i)=>{
+             
+             Object.values(blogdata).reverse().slice(0,1).map((e,i)=>{
             return(
                 <div className='container-fluid py-5'>
-                     {/* <div className='title-search text-center row pb-3'>
-                      <h2 className='col-md-6 '>{e.title}</h2>
-                     <div className=' col-md-4'>
-                        <input class=" search col-11 " type="search bg-secondary" placeholder="Search by name or title" value={key} onChange={(e)=>{setKey(e.target.value)}} aria-label="Search"/>
-                      </div> 
-                      </div> */}
+                  
                      <div className='pt-5'>
                       {/* <h2 className='container my-4 text-center'>Top Rated Blog</h2> */}
-                     <SingleBlog image={e.image} des={e.des} title={e.title}/>
+                     <SingleBlog image={e.image} des={e.des} title={e.title} by={e.by}/>
+                    
                      </div>
                     
                 </div>
@@ -99,7 +96,7 @@ export default function Home() {
             <div className='row pt-5  pb-3'>
               <div className='col-md-1'></div>
               <div className='col-md-6  categoryHead scrollport text-center'>
-                <button className='categoryBtn  btn'><p onClick={()=>setCategory("All")}  className='category'>All</p></button>
+                <button className='categoryBtn  btn'><p onClick={()=>{setSearchResult(blogdata);  settxt('All Blogs')}}  className='category'>All</p></button>
                 <button className='categoryBtn  btn'><p onClick={()=>setCategory("Art")}  className='category'>Art</p></button>
                 <button className='categoryBtn  btn'><p onClick={()=>setCategory("Business")}  className='category'>Business</p></button>
                 <button className='categoryBtn  btn'><p onClick={()=>setCategory("Education")}  className='category'>Education</p></button>
@@ -125,7 +122,7 @@ export default function Home() {
                 searchResult.length === 0 ? <div className='NoBlog'>No Available Blogs</div> :
                 searchResult.slice(0,4).map((e,i)=>{
                       return(
-                          <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image}/>
+                          <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} />
                       )
                   })
               }
