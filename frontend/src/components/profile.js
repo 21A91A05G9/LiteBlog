@@ -42,12 +42,12 @@ export default function Profile() {
                  {
                   userBlogs.map((e)=>{
                     return(
-                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image}/>
+                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} description={e.des} path={`/profile/${id}`}/>
                     )
                   })
                  }
               
-              </div>: <>No blogs are there..!</>
+              </div>: <div className="text-center" style={{height:'100vh'}}><h2>Please Wait Loging ...</h2></div>
             }
            
            
@@ -56,7 +56,7 @@ export default function Profile() {
                  {
                   artBlogs.map((e)=>{
                     return(
-                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image}/>
+                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} description={e.des}/>
                     )
                   })
                  }

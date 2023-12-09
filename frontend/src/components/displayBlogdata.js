@@ -24,7 +24,7 @@ export default function DisplayBlogdata(props) {
     {
          Object.values(blogdata).reverse().slice(0,4).map((e,i)=>{
             return(
-                <Card title={e.title} des={Text(e.des, 50)} description={e.des} state={e.state} category={e.category} by={e.by} image={e.image} id={props.id}/>
+                <Card title={e.title} des={Text(e.des, 50)} description={e.des} path={props.path} state={e.state} category={e.category} by={e.by} image={e.image} id={props.id}/>
             )
          })
     }

@@ -6,7 +6,7 @@ import Navbar from './navbar'
 import UserNavbar from './userNavbar'
 import Card from './card'
 import DisplayBlogdata from './displayBlogdata'
-import Sidebar from './sidebar'
+import Contact from './contact'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 export default function Home() {
@@ -120,20 +120,21 @@ export default function Home() {
               <hr></hr>
               { 
                 searchResult.length === 0 ? <div className='NoBlog'>No Available Blogs</div> :
-                searchResult.slice(0,4).map((e,i)=>{
+                searchResult.map((e,i)=>{
                       return(
-                          <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} />
+                          <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} description={e.des}/>
                       )
                   })
               }
               </div>)
               : <></>
             }
-            <DisplayBlogdata id={id}/>
+            { usr?<DisplayBlogdata id={id} path={`/${id}`}/>
+            :<DisplayBlogdata id={id} path={`/`}/> }
             </div>
             </div>
          
-        
+        <Contact/>
     </div>
   )
 }

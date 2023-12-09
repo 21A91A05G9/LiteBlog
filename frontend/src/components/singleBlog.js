@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 export default function singleBlog(props) {
   return (
     <div className='row'>
@@ -7,8 +7,10 @@ export default function singleBlog(props) {
     <div className='col-md-6'>
         <h2 className=' '>{props.title}</h2>
         <div className='single-des'>{props.des}</div>
-        <p className='single-para container'>wrriten by {props.by}</p>
+        <p className='single-para container mt-3'><i>writen by {props.by}</i></p>
+        <p className='single-para container' style={{position:'relative',top:'-10px'}}><i>09/12/2023</i></p>
     </div>
+    
     </div>
   )
 }

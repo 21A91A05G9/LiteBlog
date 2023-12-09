@@ -19,7 +19,7 @@ export default function App() {
           <Route path='/:id' element={<Home/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/login' element={<Login/>}/>
-          <Route path='/viewBlog' element={<ViewBlog/>}/>
+          <Route path='/viewBlog/:id' element={<ViewBlog/>}/>
           <Route path='/createblog/:id' element={<Createblog/>}/>
           <Route path='/profile/:id' element={<Profile/>}/>
         </Routes>

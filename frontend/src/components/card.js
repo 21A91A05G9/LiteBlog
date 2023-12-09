@@ -22,7 +22,7 @@ export default function Card(props) {
     }
   }
   const handleCard =()=>{
-    nav('/viewBlog',{state:{title:props.title,des:props.description,category:props.category,by:props.by,image:props.image,id:props.id}})
+    nav(`/viewBlog/${props.id}`,{state:{title:props.title,des:props.description,category:props.category,by:props.by,image:props.image,id:props.id,path:props.path}})
   }
   
   return (
