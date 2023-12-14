@@ -18,14 +18,14 @@ export default function Home() {
   const [category,setCategory] = useState("")
   let [blogdata,setBlogdata] = useState([])
     useEffect(()=>{
-      axios.get('http://localhost:5002/getBlogData').then((res)=>{ 
+      axios.get('https://lite-blog-nine.vercel.app/getBlogData').then((res)=>{ 
           setBlogdata(res.data.blogdata) 
           
       })
     },[])
   useEffect(()=>{
     if(id!=undefined){
-      axios.get('http://localhost:5002/getuser/'+id).then((res) => {
+      axios.get('https://lite-blog-nine.vercel.app/getuser/'+id).then((res) => {
         setUsr(res.data.userName)
       })}
     console.log("user",usr)  
@@ -33,7 +33,7 @@ export default function Home() {
   
  
   useEffect(()=>{
-    axios.get('http://localhost:5002/getSearchData', { params:{key:key} }).then((res)=>{ 
+    axios.get('https://lite-blog-nine.vercel.app/getSearchData', { params:{key:key} }).then((res)=>{ 
         setSearchResult(res.data.searchdata) 
         console.log(searchResult)
         settxt(`Looking result for "${key}"`)
@@ -42,7 +42,7 @@ export default function Home() {
 
   useEffect(()=>{
     console.log(category)
-    axios.get('http://localhost:5002/getCategory', { params:{key:category} }).then((res)=>{ 
+    axios.get('https://lite-blog-nine.vercel.app/getCategory', { params:{key:category} }).then((res)=>{ 
         setSearchResult(res.data.categoryData)
         settxt(`${category}  Blogs`)
     })
