@@ -58,7 +58,7 @@ export default function Home() {
         <div className='' >
           <div className='bg container-fluid'>
             <div className='row'>
-              <h1 className='offset-1 col-md-6 '>Sip from the cup of inspiration, let fresh ideas percolate, and weave your own blog narrative! </h1><p > Start writing your unique story... ✏️</p>
+              <h1 className='offset-1 col-md-6'>Sip from the cup of inspiration, let fresh ideas percolate, and weave your own blog narrative! </h1><p > Start writing your unique story... ✏️</p>
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@ export default function Home() {
             </div>
             </div>
             <button class="btn categoryHead col-md-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"> Categories</button> */}
-          <div style={{backgroundColor:'#d6cfbf',height:'95vh'}}>
+          {/* <div style={{backgroundColor:'#d6cfbf',height:'95vh'}}>
            {
              
              Object.values(blogdata).reverse().slice(0,1).map((e,i)=>{
@@ -81,8 +81,8 @@ export default function Home() {
                 <div className='container-fluid py-5'>
                   
                      <div className='pt-5'>
-                      {/* <h2 className='container my-4 text-center'>Top Rated Blog</h2> */}
-                     <SingleBlog image={e.image} des={e.des} title={e.title} by={e.by}/>
+                      <h2 className='container my-4 text-center'>Top Rated Blog</h2>
+                     <SingleBlog image={e.image} des={e.des} title={e.title} by={e.by} />
                     
                      </div>
                     
@@ -91,8 +91,8 @@ export default function Home() {
          })
           } 
         </div>
-        
-        <div className='container-fluid' style={{backgroundColor:'#d6c7ab',height:'100vh'}}>
+         */}
+        {/* <div className='container-fluid' style={{backgroundColor:'#d6c7ab',height:'100vh'}}>
             <div className='row pt-5  pb-3'>
               <div className='col-md-1'></div>
               <div className='col-md-6  categoryHead scrollport text-center'>
@@ -122,7 +122,11 @@ export default function Home() {
                 searchResult.length === 0 ? <div className='NoBlog'>No Available Blogs</div> :
                 searchResult.map((e,i)=>{
                       return(
-                          <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} description={e.des}/>
+                          <>
+                           { usr?<Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} description={e.des}  path={`/${id}`}/>
+                            :<Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} description={e.des}  path={'/'}/> }
+                          </>
+                          
                       )
                   })
               }
@@ -134,7 +138,7 @@ export default function Home() {
             </div>
             </div>
          
-        <Contact/>
+        <Contact/> */}
     </div>
   )
 }

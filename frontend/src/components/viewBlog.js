@@ -12,7 +12,7 @@ export default function ViewBlog({route,navigate}) {
       <SingleBlog image={location.state.image} des={location.state.des} title={location.state.title} by={location.state.by} path={location.state.path}/>       
       </div>
       
-      <p className='single-para single-btn mx-5' style={{position:'relative', left:'-53px'}} ><Link to={`${location.state.path}`}><button>back</button></Link></p>
+      <p className='single-para single-btn mx-5' style={{position:'relative', left:'-60px', top:'-10px'}} ><Link to={`${location.state.path}`}><button>back</button></Link></p>
     </div>
   );
 }

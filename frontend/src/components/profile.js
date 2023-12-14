@@ -6,7 +6,7 @@ import axios from 'axios';
 import Card from './card';
 export default function Profile() {
     const { id } = useParams();
-    const [name,setName] = useState("user")
+    const [name,setName] = useState("")
     const [userBlogs,setUserBlogs] = useState(undefined)
     const [artBlogs,setArtBlogs] = useState([])
     const [educationBlogs,setEducationBlogs] = useState([])
@@ -56,7 +56,7 @@ export default function Profile() {
                  {
                   artBlogs.map((e)=>{
                     return(
-                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} description={e.des}/>
+                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} description={e.des} path={`/profile/${id}`}/>
                     )
                   })
                  }
@@ -72,7 +72,7 @@ export default function Profile() {
                  {
                   musicBlogs.map((e)=>{
                     return(
-                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image}/>
+                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} description={e.des} path={`/profile/${id}`}/>
                     )
                   })
                  }
@@ -86,7 +86,7 @@ export default function Profile() {
                  {
                   cookingBlogs.map((e)=>{
                     return(
-                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image}/>
+                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} description={e.des} path={`/profile/${id}`}/>
                     )
                   })
                  }
@@ -99,7 +99,7 @@ export default function Profile() {
                  {
                   sportBlogs.map((e)=>{
                     return(
-                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image}/>
+                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} description={e.des} path={`/profile/${id}`}/>
                     )
                   })
                  }
@@ -113,7 +113,7 @@ export default function Profile() {
                  {
                   educationBlogs.map((e)=>{
                     return(
-                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image}/>
+                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} description={e.des} path={`/profile/${id}`}/>
                     )
                   })
                  }
@@ -127,7 +127,7 @@ export default function Profile() {
                  {
                   businessBlogs.map((e)=>{
                     return(
-                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image}/>
+                      <Card title={e.title} des={e.des} state={e.state} category={e.category} by={e.by} id={id} image={e.image} description={e.des} path={`/profile/${id}`}/>
                     )
                   })
                  }

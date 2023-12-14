@@ -140,9 +140,11 @@ body{
  
   .bg{
     height: 100vh;
+    width: 100%;;
     background-image: url('images/mainbg.jpg');
     background-size: cover;
   }
+  
   .title-search{
     margin-top: 70px;
   }
@@ -226,6 +228,13 @@ body{
     height:255px;
     width: 100%;;
     border-radius: 10px;
+  }
+  .alert{
+    width: fit-content;
+    position: absolute;
+    left: 80%;
+    padding: 5px 10px;
+    top:80px;
   }
   textarea::placeholder{
     font-size: medium;
@@ -395,19 +404,30 @@ body{
   .search::placeholder{
     color:#d6cfbf;
   }
-  /* @media  (min-width:350px) and (max-width:600px) { */
-    /* .cards{
-      margin: 10px;
-      height: 340px;
-    
-      box-shadow: 0px 0px 30px rgb(50, 50, 50,0.4);
-    }
-    .card-title{
-      height: 40px;
-    } */
-  /* } */
 
-  /* predesigned element styles */
+  /* MEDIA QUERIES */
+
+  @media (min-width:768px) and (max-width:1024px){
+    .bg{
+      background-image: url('images/mainbgM.jpg');
+    }
+    .bg p{
+      position: relative;
+      left:-100px;
+    }
+    
+  }
+  @media  (max-width:767px){
+    .bg{
+      background-image: url('images/mainbgS.jpg');
+    }
+    .bg p{
+      position: relative;
+      left:-50px;
+    }
+    
+  }
+
   @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 
 *{

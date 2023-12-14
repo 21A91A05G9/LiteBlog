@@ -6,10 +6,13 @@ import UserNavbar from './userNavbar'
 export default function Createblog() {
     
 
-    // const nav = useNavigate()
+    const nav = useNavigate()
     const [name, setName] = useState("");
     const { id } = useParams();
     console.log("id", id);
+    const[msgcolor,setMsgColor] = useState("")
+    const [op,setOp] =useState()
+    const [flag,setFlag] = useState(0)
     const [blogId,setBlogId]= useState(undefined);
     const [imageurl,setImageurl] = useState("")
     const [img,setImg] = useState(image)
@@ -51,11 +54,12 @@ export default function Createblog() {
         
         axios
           .post('http://localhost:5002/newblog', formData).then((res) => {
-            alert(res.data.msg);
+            // alert(res.data.msg);
             if (res.data.msg === 'Blog created successfully') {
-              
+              setFlag(1)
               setImageurl(res.data.imagePath)
               setBlogId(res.data.newBlogData._id);
+              
             }
           })
           .catch((err) => {
@@ -69,8 +73,15 @@ export default function Createblog() {
       <UserNavbar name={name} id={id}/>
       <div className='container-fluid createMain'>
       
-        <div className='containerfluid'>
+        <div className='container-fluid'>
+        {
+            flag? <div class="alert alert-success" role="alert">
+            successfully created <button className='btn-close' onClick={()=>{setFlag(0); }}></button>
+          </div> : <></>
+        }
         <h2 className='text-center  blogHead'>Create Your Own Blog</h2>
+       
+       
         <form onSubmit={handleNewBlog}>
          <div className='row create'>
 
