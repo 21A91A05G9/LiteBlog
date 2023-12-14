@@ -16,7 +16,7 @@ const app=express();
 app.use(bodyParser.json())
 app.use(cors(
   {
-    origin:["https://lite-blog-app.vercel.app/"],
+    origin:["https://lite-blog-app.vercel.app"],
     methods:["POST","GET"],
     credentials: true
   }
