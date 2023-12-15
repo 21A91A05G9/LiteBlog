@@ -83,7 +83,7 @@ export default function Home() {
             </div>
             </div>
             <button class="btn categoryHead col-md-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"> Categories</button> */}
-          {/* <div style={{backgroundColor:'#d6cfbf',height:'95vh'}}>
+          <div style={{backgroundColor:'#d6cfbf',height:'95vh'}}>
            {
              
              Object.values(blogdata).reverse().slice(0,1).map((e,i)=>{
@@ -101,8 +101,8 @@ export default function Home() {
          })
           } 
         </div>
-         */}
-        {/* <div className='container-fluid' style={{backgroundColor:'#d6c7ab',height:'100vh'}}>
+        
+        <div className='container-fluid' style={{backgroundColor:'#d6c7ab',height:'100vh'}}>
             <div className='row pt-5  pb-3'>
               <div className='col-md-1'></div>
               <div className='col-md-6  categoryHead scrollport text-center'>
@@ -148,7 +148,7 @@ export default function Home() {
             </div>
             </div>
          
-        <Contact/> */}
+        <Contact/>
     </div>
   )
 }
