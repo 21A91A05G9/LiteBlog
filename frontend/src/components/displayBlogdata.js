@@ -16,6 +16,9 @@ export default function DisplayBlogdata(props) {
           setBlogdata(res.data.blogdata) 
           
       })
+      .catch((err)=>{
+        console.log(err)
+      })
     },[])
   return (
     <div className='row'>

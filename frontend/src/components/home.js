@@ -22,12 +22,16 @@ export default function Home() {
           setBlogdata(res.data.blogdata) 
           
       })
+      .catch((err)=>{
+        console.log(err)
+      })
     },[])
   useEffect(()=>{
     if(id!=undefined){
       axios.get('https://lite-blog-nine.vercel.app/getuser/'+id).then((res) => {
         setUsr(res.data.userName)
       })}
+      
     console.log("user",usr)  
   },[id])
   
@@ -38,6 +42,9 @@ export default function Home() {
         console.log(searchResult)
         settxt(`Looking result for "${key}"`)
     })
+    .catch((err)=>{
+      console.log(err)
+    })
   },[key])
 
   useEffect(()=>{
@@ -45,6 +52,9 @@ export default function Home() {
     axios.get('https://lite-blog-nine.vercel.app/getCategory', { params:{key:category} }).then((res)=>{ 
         setSearchResult(res.data.categoryData)
         settxt(`${category}  Blogs`)
+    })
+    .catch((err)=>{
+      console.log(err)
     })
   },[category])
 

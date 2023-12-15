@@ -22,6 +22,9 @@ export default function Register() {
             
         console.log(formdata)
         }) 
+        .catch((err)=>{
+            console.log(err)
+        })
     }
   return (
     <div className=''>

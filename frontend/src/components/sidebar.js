@@ -8,6 +8,9 @@ export default function Sidebar() {
     axios.get('https://lite-blog-nine.vercel.app/getCategory', { params:{key:category} }).then((res)=>{ 
         
     })
+    .catch((err)=>{
+      console.log(err)
+    })
   },[category])
   return (
    

@@ -23,7 +23,10 @@ export default function Createblog() {
                 setName(res.data.userName);
                 console.log("setting name", name);
             });
+            
+            
         }
+        
     }, [id]); 
 
     const [blogdata, setBlogdata] = useState({
@@ -52,8 +55,7 @@ export default function Createblog() {
         formData.append('state', blogdata.state);
         formData.append('by', blogdata.by);
         
-        axios
-          .post('https://lite-blog-nine.vercel.app/newblog', formData).then((res) => {
+        axios.post('https://lite-blog-nine.vercel.app/newblog', formData).then((res) => {
             // alert(res.data.msg);
             if (res.data.msg === 'Blog created successfully') {
               setFlag(1)

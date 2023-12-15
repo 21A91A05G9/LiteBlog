@@ -32,12 +32,12 @@ export default function Like(props) {
           .then((res) => {
             console.log("updated", res.data.updatedBlogData);
           });
+          
       }
       
     });
-
-
-      
+    
+   
   };
   // useEffect(()=>{
   //   if(id!=undefined){

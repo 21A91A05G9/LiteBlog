@@ -27,6 +27,9 @@ export default function Profile() {
           setCookingBlogs(res.data.cookingblogs)
           console.log(userBlogs)
         })
+        .catch((err)=>{
+          console.log(err)
+        })
       }
     },[id])
 
