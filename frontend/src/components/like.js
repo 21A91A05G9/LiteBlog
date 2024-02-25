@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
@@ -24,20 +24,20 @@ export default function Like(props) {
         
       }
      console.log("blogdata id is", id,newBlogData.title);
-     axios.get('http://localhost:5002/getId', { params: {title: newBlogData.title} }).then((res) => {  
+     axios.get('https://lite-blog-backend.vercel.app/getId', { params: {title: newBlogData.title} }).then((res) => {  
       setId(res.data.id);
       console.log("blogdata id is", id);
       if (id !== undefined) {
-        axios.put('http://localhost:5002/updateblog/' + id, newBlogData)
+        axios.put('https://lite-blog-backend.vercel.app/updateblog/' + id, newBlogData)
           .then((res) => {
             console.log("updated", res.data.updatedBlogData);
           });
-          
       }
       
     });
-    
-   
+
+
+      
   };
   // useEffect(()=>{
   //   if(id!=undefined){

@@ -1,16 +1,16 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+
 export default function singleBlog(props) {
   return (
-    <div className='row'>
-    <div className='singleimg text-center col-md-5'> <img src={`${props.image}`} alt="Photo" width="auto" height="303"/></div>
-    <div className='col-md-6'>
-        <h2 className=' '>{props.title}</h2>
-        <div className='single-des'>{props.des}</div>
-        <p className='single-para container mt-3'><i>writen by {props.by}</i></p>
-        {/* <p className='single-para container' style={{position:'relative',top:'-10px'}}><i>09/12/2023</i></p> */}
+    <div className='row mx-4 mt-4'>
+      <h2 className='my-4'>{props.title}</h2>
+      <div className='singleimg  col-md-5'>
+        <img className='col-12' src={`https://lite-blog-backend.vercel.app/${props.image}`} alt="" />
+      </div>
+      <div className='col-md-6'>
+        <div className='single-des my-1'>{props.des}</div>
+        <p className='single-para container my-1'><i>written by {props.by}</i></p>
+      </div>
     </div>
-    
-    </div>
-  )
+  );
 }

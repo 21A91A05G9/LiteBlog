@@ -13,22 +13,19 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const app=express();
 app.use(bodyParser.json())
-
-// app.use(cors(
-//   {
-//     origin:["https://lite-blog-app.vercel.app"],
-//     methods:["POST","GET"],
-//     credentials: true
-//   }
-// ))
-
+app.use(cors(
+  {
+    origin:["https://lite-blog-frontend.vercel.app"],
+    methods:["POST","GET"],
+    credentials: true
+  }
+))
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-mongoose.connect('mongodb+srv://vasavi_08:CK83BfPNXY2DABQn@cluster0.yhpakpu.mongodb.net/DriveReady?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://vasavi_08:FJ2ZnHJjoi4ofphA@cluster0.yhpakpu.mongodb.net/DriveReady?retryWrites=true&w=majority')
 .then(()=> app.listen(5002))
 .then(()=>console.log("Connected to Database & Listening to localhost 5002"))
 .catch((err)=>console.log(err));
-
 app.post('/register',async(req,res,next)=>{
     console.log("Data in backend:",req.body)
     const {name,username,email,password} = req.body

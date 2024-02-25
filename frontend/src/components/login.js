@@ -4,7 +4,7 @@ import {Link, useNavigate} from 'react-router-dom'
 
 export default function Login() {
     // const [msg,setMsg] = useState("")
-    // const [msgcolor,setMsgColor] = useState("")
+    // const[msgcolor,setMsgColor] = useState("")
     // const [op,setOp] =useState()
     const nav=useNavigate()
     const [logindata,setLogindata] = useState(
@@ -15,9 +15,9 @@ export default function Login() {
     )
     const  handleLogin = (e) => {
         e.preventDefault(); 
-        axios.post('http://localhost:5002/login',logindata)
-        .then((res)=>{
-            // console.log(logindata,res.data.id)
+        
+        axios.post('https://lite-blog-backend.vercel.app/login',logindata).then((res)=>{
+            console.log(logindata,res.data.id)
             if(res.data.msg === 'success') {
                 // setMsg('login successfully')
                 // setMsgColor('green')
@@ -32,10 +32,11 @@ export default function Login() {
                 // setMsg('Not registered')
                 // setMsgColor('yellow')
             }
-        }).catch(err => console.log(err))
+        }) 
     }
   return (
     <div className='containe-fluidr'>
+        
         <div class="area" >
         <ul class="circles">
        
