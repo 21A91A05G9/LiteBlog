@@ -18,7 +18,7 @@ export default function Createblog() {
     const [img,setImg] = useState(image)
     useEffect(() => {
         if (id !== undefined) {
-            axios.get('https://lite-blog-nine.vercel.app/getuser/' + id)
+            axios.get('http://localhost:5002/getuser/' + id)
             .then((res) => {
                 setName(res.data.userName);
                 console.log("setting name", name);
@@ -55,7 +55,7 @@ export default function Createblog() {
         formData.append('state', blogdata.state);
         formData.append('by', blogdata.by);
         
-        axios.post('https://lite-blog-nine.vercel.app/newblog', formData).then((res) => {
+        axios.post('newblog', formData).then((res) => {
             // alert(res.data.msg);
             if (res.data.msg === 'Blog created successfully') {
               setFlag(1)

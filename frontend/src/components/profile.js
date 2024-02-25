@@ -16,7 +16,7 @@ export default function Profile() {
     const [cookingBlogs,setCookingBlogs] = useState([])
     useEffect(()=>{
       if(id!==undefined){
-        axios.get('https://lite-blog-nine.vercel.app/getuserblogs/'+id).then((res)=>{
+        axios.get('http://localhost:5002/getuserblogs/'+id).then((res)=>{
           setName(res.data.Name)
           setUserBlogs(res.data.userblogs)
           setMusicBlogs(res.data.musicblogs)

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export default function singleBlog(props) {
   return (
     <div className='row'>
-    <div className='singleimg text-center col-md-5'> <img src={`https://lite-blog-nine.vercel.app/${props.image}`} alt="Photo" width="auto" height="303"/></div>
+    <div className='singleimg text-center col-md-5'> <img src={`${props.image}`} alt="Photo" width="auto" height="303"/></div>
     <div className='col-md-6'>
         <h2 className=' '>{props.title}</h2>
         <div className='single-des'>{props.des}</div>
