@@ -20,28 +20,44 @@ export default function Home() {
   let [blogdata, setBlogdata] = useState([]);
 
   useEffect(() => {
+<<<<<<< HEAD
     axios.get('http://localhost:5001/getBlogData').then((res) => {
+=======
+    axios.get('https://lite-blog-backend.vercel.app/getBlogData').then((res) => {
+>>>>>>> 6b9b978d5477e6cc07086e79f136e3980416940c
       setBlogdata(res.data.blogdata);
     });
   }, []);
 
   useEffect(() => {
     if (id !== undefined) {
+<<<<<<< HEAD
       axios.get('http://localhost:5001/getuser/' + id).then((res) => {
+=======
+      axios.get('https://lite-blog-backend.vercel.app/getuser/' + id).then((res) => {
+>>>>>>> 6b9b978d5477e6cc07086e79f136e3980416940c
         setUsr(res.data.userName);
       });
     }
   }, [id, usr]); // Include 'usr' in the dependency array
 
   useEffect(() => {
+<<<<<<< HEAD
     axios.get('http://localhost:5001/getSearchData', { params: { key: key } }).then((res) => {
+=======
+    axios.get('https://lite-blog-backend.vercel.app/getSearchData', { params: { key: key } }).then((res) => {
+>>>>>>> 6b9b978d5477e6cc07086e79f136e3980416940c
       setSearchResult(res.data.searchdata);
       setTxt(`Looking result for "${key}"`);
     });
   }, [key]);
 
   useEffect(() => {
+<<<<<<< HEAD
     axios.get('http://localhost:5001/getCategory', { params: { key: category } }).then((res) => {
+=======
+    axios.get('https://lite-blog-backend.vercel.app/getCategory', { params: { key: category } }).then((res) => {
+>>>>>>> 6b9b978d5477e6cc07086e79f136e3980416940c
       setSearchResult(res.data.categoryData);
       setTxt(`${category}  Blogs`);
     });

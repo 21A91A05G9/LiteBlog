@@ -14,6 +14,7 @@ const __dirname = dirname(__filename);
 const app=express();
 app.use(bodyParser.json())
 app.use(cors(
+<<<<<<< HEAD
   // {
   //   origin:["https://blog-7koh.vercel.app/"],
   //   methods:["POST","GET"],
@@ -25,6 +26,19 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 mongoose.connect('mongodb+srv://vasavi_08:V7oxn9VU1hIJ7mpd@cluster0.yhpakpu.mongodb.net/DriveReady?retryWrites=true&w=majority')
 .then(()=> app.listen(5001))
 .then(()=>console.log("Connected to Database & Listening to localhost 5001"))
+=======
+  {
+    origin:["https://lite-blog-frontend.vercel.app"],
+    methods:["POST","GET"],
+    credentials: true
+  }
+))
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
+mongoose.connect('mongodb+srv://vasavi_08:FJ2ZnHJjoi4ofphA@cluster0.yhpakpu.mongodb.net/DriveReady?retryWrites=true&w=majority')
+.then(()=> app.listen(5002))
+.then(()=>console.log("Connected to Database & Listening to localhost 5002"))
+>>>>>>> 6b9b978d5477e6cc07086e79f136e3980416940c
 .catch((err)=>console.log(err));
 app.post('/register',async(req,res,next)=>{
     console.log("Data in backend:",req.body)

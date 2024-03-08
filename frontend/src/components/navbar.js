@@ -7,8 +7,13 @@ export default function Navbar() {
   return (
     <>
     <div>
+<<<<<<< HEAD
     <nav className="navbar bg-body-tertiary fixed-top">
       <div className="container-fluid">
+=======
+    <nav class="navbar bg-body-tertiary fixed-top">
+      <div class="container-fluid">
+>>>>>>> 6b9b978d5477e6cc07086e79f136e3980416940c
         <Link to="/" className="navbar-brand">
           {/* <img src={Logo} alt="Logo" height={20} width={25} />    &nbsp; */}
           <span style={{ color:'#f6efe0' }}>
