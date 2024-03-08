@@ -12,11 +12,7 @@ export default function DisplayBlogdata(props) {
     }
     let [blogdata,setBlogdata] = useState([])
     useEffect(()=>{
-<<<<<<< HEAD
       axios.get('http://localhost:5001/getBlogData').then((res)=>{ 
-=======
-      axios.get('https://lite-blog-backend.vercel.app/getBlogData').then((res)=>{ 
->>>>>>> 6b9b978d5477e6cc07086e79f136e3980416940c
           setBlogdata(res.data.blogdata) 
           
       })

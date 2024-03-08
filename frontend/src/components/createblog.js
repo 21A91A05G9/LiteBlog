@@ -18,11 +18,7 @@ export default function Createblog() {
     const [img,setImg] = useState(image)
     useEffect(() => {
         if (id !== undefined) {
-<<<<<<< HEAD
             axios.get('http://localhost:5001/getuser/' + id)
-=======
-            axios.get('https://lite-blog-backend.vercel.app/getuser/' + id)
->>>>>>> 6b9b978d5477e6cc07086e79f136e3980416940c
             .then((res) => {
                 setName(res.data.userName);
                 console.log("setting name", name);
@@ -57,11 +53,7 @@ export default function Createblog() {
         formData.append('by', blogdata.by);
         
         axios
-<<<<<<< HEAD
           .post('http://localhost:5001/newblog', formData).then((res) => {
-=======
-          .post('https://lite-blog-backend.vercel.app/newblog', formData).then((res) => {
->>>>>>> 6b9b978d5477e6cc07086e79f136e3980416940c
             // alert(res.data.msg);
             if (res.data.msg === 'Blog created successfully') {
               setFlag(1)
@@ -83,11 +75,7 @@ export default function Createblog() {
       
         <div className='container-fluid'>
         {
-<<<<<<< HEAD
             flag? <div className="alert alert-success" role="alert">
-=======
-            flag? <div class="alert alert-success" role="alert">
->>>>>>> 6b9b978d5477e6cc07086e79f136e3980416940c
             successfully created <button className='btn-close' onClick={()=>{setFlag(0); }}></button>
           </div> : <></>
         }
@@ -100,17 +88,10 @@ export default function Createblog() {
             <div className='col-md-5 image-div' style={{ backgroundImage: `url(${typeof img === 'string' ?img:URL.createObjectURL(img)})` }}><input type='file'  accept='image/*' onChange={(e) =>{  setBlogdata({ ...blogdata, image: e.target.files[0] }); setImg(e.target.files[0])}} /></div>
             <div className='col-md-6'>
 
-<<<<<<< HEAD
             <div className=" mb-2 mt-2">
               <input type="text"  className='col-md-7 blog-text p-2 me-4' aria-label="Sizing example input" placeholder='Title Of The Blog' aria-describedby="inputGroup-sizing-lg" value={blogdata.title}onChange={(e) => setBlogdata({ ...blogdata, title: e.target.value })}/>  
            
               <select className="col-md-4  select p-2" value={blogdata.category} onChange={(e) => setBlogdata({ ...blogdata, category: e.target.value })}>
-=======
-            <div class=" mb-2 mt-2">
-              <input type="text"  className='col-md-7 blog-text p-2 me-4' aria-label="Sizing example input" placeholder='Title Of The Blog' aria-describedby="inputGroup-sizing-lg" value={blogdata.title}onChange={(e) => setBlogdata({ ...blogdata, title: e.target.value })}/>  
-           
-              <select class="col-md-4  select p-2" value={blogdata.category} onChange={(e) => setBlogdata({ ...blogdata, category: e.target.value })}>
->>>>>>> 6b9b978d5477e6cc07086e79f136e3980416940c
                   <option>Select Category</option>
                   <option>Art</option>
                   <option>Music</option>

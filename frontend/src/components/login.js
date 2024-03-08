@@ -16,11 +16,7 @@ export default function Login() {
     const  handleLogin = (e) => {
         e.preventDefault(); 
         
-<<<<<<< HEAD
         axios.post('http://localhost:5001/login',logindata).then((res)=>{
-=======
-        axios.post('https://lite-blog-backend.vercel.app/login',logindata).then((res)=>{
->>>>>>> 6b9b978d5477e6cc07086e79f136e3980416940c
             console.log(logindata,res.data.id)
             if(res.data.msg === 'success') {
                 // setMsg('login successfully')
@@ -41,13 +37,8 @@ export default function Login() {
   return (
     <div className='containe-fluidr'>
         
-<<<<<<< HEAD
         <div className="area" >
         <ul className="circles">
-=======
-        <div class="area" >
-        <ul class="circles">
->>>>>>> 6b9b978d5477e6cc07086e79f136e3980416940c
        
                         <li></li>
                         <li></li>

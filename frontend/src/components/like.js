@@ -24,19 +24,11 @@ export default function Like(props) {
         
       }
      console.log("blogdata id is", id,newBlogData.title);
-<<<<<<< HEAD
      axios.get('http://localhost:5001/getId', { params: {title: newBlogData.title} }).then((res) => {  
       setId(res.data.id);
       console.log("blogdata id is", id);
       if (id !== undefined) {
         axios.put('http://localhost:5001/updateblog/' + id, newBlogData)
-=======
-     axios.get('https://lite-blog-backend.vercel.app/getId', { params: {title: newBlogData.title} }).then((res) => {  
-      setId(res.data.id);
-      console.log("blogdata id is", id);
-      if (id !== undefined) {
-        axios.put('https://lite-blog-backend.vercel.app/updateblog/' + id, newBlogData)
->>>>>>> 6b9b978d5477e6cc07086e79f136e3980416940c
           .then((res) => {
             console.log("updated", res.data.updatedBlogData);
           });
