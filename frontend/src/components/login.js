@@ -16,7 +16,7 @@ export default function Login() {
     const  handleLogin = (e) => {
         e.preventDefault(); 
         
-        axios.post('http://localhost:5001/login',logindata).then((res)=>{
+        axios.post('https://lite-blog-backend.vercel.app/login',logindata).then((res)=>{
             console.log(logindata,res.data.id)
             if(res.data.msg === 'success') {
                 // setMsg('login successfully')

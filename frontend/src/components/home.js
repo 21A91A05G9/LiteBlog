@@ -20,28 +20,28 @@ export default function Home() {
   let [blogdata, setBlogdata] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5001/getBlogData').then((res) => {
+    axios.get('https://lite-blog-backend.vercel.app/getBlogData').then((res) => {
       setBlogdata(res.data.blogdata);
     });
   }, []);
 
   useEffect(() => {
     if (id !== undefined) {
-      axios.get('http://localhost:5001/getuser/' + id).then((res) => {
+      axios.get('https://lite-blog-backend.vercel.app/getuser/' + id).then((res) => {
         setUsr(res.data.userName);
       });
     }
   }, [id, usr]); // Include 'usr' in the dependency array
 
   useEffect(() => {
-    axios.get('http://localhost:5001/getSearchData', { params: { key: key } }).then((res) => {
+    axios.get('https://lite-blog-backend.vercel.app/getSearchData', { params: { key: key } }).then((res) => {
       setSearchResult(res.data.searchdata);
       setTxt(`Looking result for "${key}"`);
     });
   }, [key]);
 
   useEffect(() => {
-    axios.get('http://localhost:5001/getCategory', { params: { key: category } }).then((res) => {
+    axios.get('https://lite-blog-backend.vercel.app/getCategory', { params: { key: category } }).then((res) => {
       setSearchResult(res.data.categoryData);
       setTxt(`${category}  Blogs`);
     });

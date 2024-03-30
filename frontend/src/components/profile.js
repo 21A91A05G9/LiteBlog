@@ -11,7 +11,7 @@ export default function Profile() {
 
     useEffect(() => {
         if (id !== undefined) {
-            axios.get('http://localhost:5001/getuserblogs/' + id).then((res) => {
+            axios.get('https://lite-blog-backend.vercel.app/getuserblogs/' + id).then((res) => {
                 setName(res.data.Name);
                 setUserBlogs(res.data.userblogs);
             });
