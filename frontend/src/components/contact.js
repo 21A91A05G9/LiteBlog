@@ -1,7 +1,7 @@
 
 function Contact(){
     return (
-      <footer className="scontainer-fluid mt-5" style={{backgroundColor:'#ffe6cc',height:'100vh'}}> 
+      <footer className="scontainer-fluid" style={{backgroundColor:'#ffe6cc', height: '100vh'}}> 
        <div className="container" >
             <div className="row container" >
                 <div className="col-md-5 col-sm-1 col-xs-1 col-lg-5  col-offset-md-3"></div>

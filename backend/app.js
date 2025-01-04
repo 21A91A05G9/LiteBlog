@@ -22,7 +22,11 @@ app.use(cors(
 ))
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
+<<<<<<< HEAD
 mongoose.connect('mongodb+srv:V7oxn9VU1hIJ7mpd@cluster0.yhpakpu.mongodb.net/retryWrites=true&w=majority')
+=======
+mongoose.connect('mongodb+srv://vasavi_08:37pcW2iDgJMuI6yf@cluster0.yhpakpu.mongodb.net/DriveReady?retryWrites=true&w=majority')
+>>>>>>> a6d716d (add some changes)
 .then(()=> app.listen(5001))
 .then(()=>console.log("Connected to Database & Listening to localhost 5001"))
 .catch((err)=>console.log(err));

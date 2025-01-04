@@ -31,7 +31,7 @@ export default function Home() {
         setUsr(res.data.userName);
       });
     }
-  }, [id, usr]); // Include 'usr' in the dependency array
+  }, [id]); // Include 'usr' in the dependency array
 
   useEffect(() => {
     axios.get('https://lite-blog-backend.vercel.app/getSearchData', { params: { key: key } }).then((res) => {
@@ -45,7 +45,7 @@ export default function Home() {
       setSearchResult(res.data.categoryData);
       setTxt(`${category}  Blogs`);
     });
-  }, [category, searchResult]); // Include 'searchResult' in the dependency array
+  }, [category]); // Include 'searchResult' in the dependency array
 
   return (
     <div>
@@ -61,7 +61,7 @@ export default function Home() {
         {
           Object.values(blogdata).reverse().slice(0, 1).map((e, i) => {
             return (
-              <div className='container-fluid py-5' key={i}>
+              <div className='container-fluid' key={i}>
                 <div className=''>
                   <SingleBlog image={e.image} des={e.des} title={e.title} by={e.by} />
                 </div>
@@ -70,10 +70,10 @@ export default function Home() {
           })
         }
       </div>
-      <div className='container-fluid' style={{ backgroundColor: '#d6c7ab', height: '100vh' }}>
+      <div className='container-fluid' style={{ backgroundColor: '#d6c7ab', alignItems:'center'}}>
         <div className='row pt-5  pb-3'>
           <div className='col-md-1'></div>
-          <div className='col-md-6  categoryHead scrollport text-center'>
+          <div className='col-md-6  categoryHead scrollport '>
             <button className='categoryBtn  btn'><p onClick={() => { setSearchResult(blogdata); setTxt('All Blogs'); }} className='category'>All</p></button>
             <button className='categoryBtn  btn'><p onClick={() => setCategory("Art")} className='category'>Art</p></button>
             <button className='categoryBtn  btn'><p onClick={() => setCategory("Business")} className='category'>Business</p></button>
@@ -82,7 +82,7 @@ export default function Home() {
             <button className='categoryBtn  btn'><p onClick={() => setCategory("Sports")} className='category'>Sports</p></button>
             <button className='categoryBtn  btn'><p onClick={() => setCategory("")} className='category'>x</p></button>
           </div>
-          <div className=' text-center col-md-5 text-center'>
+          <div className=' text-center col-md-5 '>
             <input className=" search col-8 my-2" type="search bg-secondary" placeholder="Search by name or title" value={key} onChange={(e)=>{setKey(e.target.value)}} aria-label="Search"/>
                 <FontAwesomeIcon icon={faSearch} className='searchicon'></FontAwesomeIcon>
               </div>

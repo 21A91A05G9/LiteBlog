@@ -139,10 +139,9 @@ body{
 
  
   .bg{
-    height: 100vh;
-    width: 100%;;
     background-image: url('images/mainbg.jpg');
     background-size: cover;
+    height: 100vh;
   }
   
   .title-search{
@@ -194,6 +193,7 @@ body{
     position: relative;
     top:10px;
     padding: 0px;
+    margin-bottom: 12px;
     border: none;
   }
   .category:hover{
