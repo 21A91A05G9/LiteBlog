@@ -85,7 +85,7 @@ https://lite-blog-frontend.vercel.app/
 - **Frontend:** [React.js](https://reactjs.org/), HTML, CSS, JavaScript, Bootstrap
 - **Backend:** [Node.js](https://nodejs.org/), [Express.js](https://expressjs.com/)
 - **Database:** [MongoDB](https://www.mongodb.com/)
-- **Deployment:**[Vercel](https://vercel.com/)
+- **Deployment:** [Vercel](https://vercel.com/)
 
 ## Installation
 
