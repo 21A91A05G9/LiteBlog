@@ -42,7 +42,7 @@ Lets users create, read, update, and delete blog posts.
 
 ## Deploy Link
 
-https://e-leave-hub.vercel.app/
+https://lite-blog-frontend.vercel.app/
 
 ## Table of Contents
 - [Usage](#usage)
