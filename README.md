@@ -42,7 +42,7 @@ Lets users create, read, update, and delete blog posts.
 
 ## Deploy Link
 
-https://lite-blog-frontend.vercel.app/
+You can check out the website of the Blog-Lite [here](https://lite-blog-frontend.vercel.app/).
 
 ## Table of Contents
 - [Usage](#usage)
